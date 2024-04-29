@@ -1,0 +1,45 @@
+- bron voor aan te tonen dat gassensoren niet geschikt zijn voor veestallen
+- wat is er mis met bestaande gassensoren voor veestallen
+- MEER PROBLEEMSTELLING
+
+--> sensoren kosten 600 - 1000 euro en gaan 6 maanden mee
+--> ik zoek uit welke opstelling nodig is voor deze sensoren en of ze geschikt zijn om verschillende gassen uit te lezen
+
+
+hoe werkt het?
+https://domoticx.com/sensoren-mq-gas-sensoren/
+
+hoelang leeft mq?
+https://www.winsen-sensor.com/faq/how-long.html
+
+proffesionele stalgassensor
+https://www.crodeon.com/nl/blogs/news/co2-vergiftiging-varkens
+
+alle verschillende soorten gassensoren
+https://d1wqtxts1xzle7.cloudfront.net/80765901/P_1957-libre.pdf?1644872262=&response-content-disposition=inline%3B+filename%3DZainab_Yunusa_1.pdf&Expires=1713959524&Signature=EwJG8gHgSSi2ovlOsiIzzhsVZanRW7p1kmzP9y9VewYpPDvHWb~A8TmfORkaSBBleZmqRRrRYgmhgbYzkvSjtegxV82Jr4CXH~ln~10FOFdhB7fgKNiWoJxT2zqquyafM15MRJUwI8UPg~9wemJ3XAMMcdQWW~vrVDP~bunKn9Gr8iXFnqMwqO6zlyvVHOry0hUwQ~C1B3xk6AnOEHSmRu9F8GlkRZmTViQne77ujVZiyIFby6pibHmo9DcTGncd0rstn6znOOLXtfkPcBkvQ9gNvKpERMDkydPd2-jfGBoT3-~gNA7sZORI8gKLvHqZ3~OXsCdI49hdW-jhGFTr3w__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA
+en
+https://www.akm.com/eu/en/products/co2-sensor/tutorial/types-mechanism/
+
+wat zijn ppm?
+https://nl.wikipedia.org/wiki/Parts_per_million
+
+ppm calculators
+https://teesing.com/en/tools/ppm-mg3-converter#mgm3-ppm
+https://www.lenntech.nl/calculators/ppm/converter-parts-per-million.htm
+
+welke gassensoren?
+https://www.co2meter.com/blogs/news/types-of-gas-detectors
+https://www.akm.com/eu/en/products/co2-sensor/tutorial/types-mechanism/
+https://en.wikipedia.org/wiki/Catalytic_bead_sensor
+https://nl.gvda-instrument.com/info/subtract-the-types-of-gas-sensors-used-in-the-87182523.html
+
+arduino
+https://nl.wikipedia.org/wiki/Electrically_erasable_programmable_read-only_memory
+https://nl.wikipedia.org/wiki/Static_random-access_memory
+https://store.arduino.cc/products/arduino-mega-2560-rev3
+
+AT
+https://en.wikipedia.org/wiki/Hayes_AT_command_set
+https://www.espressif.com/sites/default/files/documentation/4b-esp8266_at_command_examples_en.pdf
+https://docs.espressif.com/projects/esp-at/en/release-v2.1.0.0_esp32/AT_Command_Set/Wi-Fi_AT_Commands.html
+ https://www.rt-thread.io/document/site/programming-manual/at/at/

@@ -5,32 +5,63 @@
 \chapter{\IfLanguageName{dutch}{Inleiding}{Introduction}}%
 \label{ch:inleiding}
 
-De inleiding moet de lezer net genoeg informatie verschaffen om het onderwerp te begrijpen en in te zien waarom de onderzoeksvraag de moeite waard is om te onderzoeken. In de inleiding ga je literatuurverwijzingen beperken, zodat de tekst vlot leesbaar blijft. Je kan de inleiding verder onderverdelen in secties als dit de tekst verduidelijkt. Zaken die aan bod kunnen komen in de inleiding~\autocite{Pollefliet2011}:
+%De inleiding moet de lezer net genoeg informatie verschaffen om het onderwerp te begrijpen en in te zien waarom de onderzoeksvraag de moeite waard is om te onderzoeken. In de inleiding ga je literatuurverwijzingen beperken, zodat de tekst vlot leesbaar blijft. Je kan de inleiding verder onderverdelen in secties als dit de tekst verduidelijkt. Zaken die aan bod kunnen komen in de inleiding~\autocite{Pollefliet2011}:
+%\begin{itemize}
+%    context, achtergrond
+%    \item afbakenen van het onderwerp
+%    verantwoording van het onderwerp, methodologie
+%    probleemstelling
+%    onderzoeksdoelstelling
+%    onderzoeksvraag
+%    \item \ldots
+%\end{itemize}
 
-\begin{itemize}
-  \item context, achtergrond
-  \item afbakenen van het onderwerp
-  \item verantwoording van het onderwerp, methodologie
-  \item probleemstelling
-  \item onderzoeksdoelstelling
-  \item onderzoeksvraag
-  \item \ldots
-\end{itemize}
+Jaarlijks sterven talloze varkens aan vergiftiging door schadelijke gassen die zich ophopen in de stalomgeving \autocite{Sercu2023}. Deze gassen, zoals koolstofmonoxide (CO), koolstofdioxide (CO\textsubscript{2}), ammoniak (NH\textsubscript{3}), en methaan (CH\textsubscript{4}), ontstaan in de mest van varkens als gevolg van microbiële afbraak van de aanwezige eiwitten \autocite{Wolf2013}. Deze gassen kunnen bij ophoping zeer giftig zijn voor zowel dieren als mensen. Ook kan dit leiden tot een afname van de biodiversiteit in de omgeving van de stal. Dat komt voornamelijk door ammoniak, ammoniak zorgt voor vermesting waardoor de grond steeds rijker wordt aan voedingsstoffen. Hierdoor worden veel planten verdrongen door planten zoals gras en brandnetels,
+%TODO https://www.milieucentraal.nl/klimaat-en-aarde/milieuproblemen/stikstof-in-de-lucht-en-bodem/
+dit zorgt voor minder planten en dieren waardoor de biodiversiteit verslechtert. Ook kan er in de buurt van een varkensstal last van geurhinder zijn door de grote hoeveelheid ammoniak in de lucht \autocite{RSS2020}.
+%TODO https://www.wur.nl/nl/en/onderzoek-resultaten/dossiers/dossier/stikstof-1.htm erin weven
+
+Het monitoren van het klimaat in de stal kan worden uitgevoerd met behulp van verschillende gassensoren, maar een professionele sensor kan al snel zeer duur zijn. Bovendien zijn dergelijke sensoren doorgaans niet ontworpen met het oog op gebruik in stalomgevingen, wat hun levensduur aanzienlijk kan verkorten. Vandaar dat de centrale onderzoeksvraag luidt: ``Hoe geschikt zijn goedkope sensoren om gassen in stalomgevingen te meten?''. Het onderzoek zal zich richten op goedkope gassensoren, met name van het type halfgeleiders, die aan de hand van een microcontroller (Arduino) de luchtkwaliteit van een stal kunnen bepalen. Er zal aandacht worden besteed aan hoe deze sensoren precies in elkaar zitten, hun nauwkeurigheid en geschiktheid voor gebruik in stalomgevingen, en hoe de bekomen data kan worden opgeslagen en geïnterpreteerd.
+
+%De beoogde doelgroep voor dit onderzoek zijn fabrikanten van gassensoren, die deze studie kunnen benutten als inspiratiebron voor de ontwikkeling van nieuwe producten die specifiek zijn gericht op veehouders. De onderzoekers van deze fabrikanten zouden deze studie kunnen gebruiken om op een goedkope manier een test set-up van een gassensor in elkaar te zetten. Deze test-setup zou dan uiteindelijk kunnen dienen tot een professionele gassensor, die geschikt is om in een stalomgeving de luchtkwaliteit te monitoren. Hierdoor zullen veehouders sneller gemotiveerd zijn om gassensoren te implementeren die voldoende geschikt zijn voor een stalomgeving, gezien hun verantwoordelijkheid voor het waarborgen van de gezondheid van hun dieren en het milieu.
+
 
 \section{\IfLanguageName{dutch}{Probleemstelling}{Problem Statement}}%
 \label{sec:probleemstelling}
 
-Uit je probleemstelling moet duidelijk zijn dat je onderzoek een meerwaarde heeft voor een concrete doelgroep. De doelgroep moet goed gedefinieerd en afgelijnd zijn. Doelgroepen als ``bedrijven,'' ``KMO's'', systeembeheerders, enz.~zijn nog te vaag. Als je een lijstje kan maken van de personen/organisaties die een meerwaarde zullen vinden in deze bachelorproef (dit is eigenlijk je steekproefkader), dan is dat een indicatie dat de doelgroep goed gedefinieerd is. Dit kan een enkel bedrijf zijn of zelfs één persoon (je co-promotor/opdrachtgever).
+%Uit je probleemstelling moet duidelijk zijn dat je onderzoek een meerwaarde heeft voor een concrete doelgroep. De doelgroep moet goed gedefinieerd en afgelijnd zijn. Doelgroepen als ``bedrijven,'' ``KMO's'', systeembeheerders, enz.~zijn nog te vaag. Als je een lijstje kan maken van de personen/organisaties die een meerwaarde zullen vinden in deze bachelorproef (dit is eigenlijk je steekproefkader), dan is dat een indicatie dat de doelgroep goed gedefinieerd is. Dit kan een enkel bedrijf zijn of zelfs één persoon (je co-promotor/opdrachtgever).
+
+Omdat professionele gassensoren op de markt niet geschikt zijn voor het klimaat van een veestal kan hun gebruiksduur sterk afnemen. Zo heeft de gemiddelde gassensor een levensduur van 6 maanden doordat de gevoeligheid snel afneemt in het stalklimaat. Omdat deze sensoren 600 tot 1000 euro kunnen kosten verliezen veehouders snel de motivatie om gassensoren te vervangen. Daarom richt deze studie zich op kostefficiënte halfgeleider gassensoren, met name de MQ-sensors. Deze kleine en goedkope sensoren zijn robuust en kunnen gassen detecteren door middel van een verandering in weerstand bij aanraking.
+
+Dit onderzoek richt zich naar fabrikanten van gassensoren, die deze studie kunnen benutten als inspiratiebron voor de ontwikkeling van nieuwe producten die specifiek zijn gericht op veehouders. De onderzoekers van deze fabrikanten zouden deze studie kunnen gebruiken om op een goedkope manier een test set-up van een gassensor in elkaar te zetten. Deze test-setup zou dan uiteindelijk als inspiratie kunnen dienen voor een professionele gassensor, die op kostefficiënte manier geschikt is om de luchtkwaliteit in een stalomgeving te monitoren. Hierdoor zullen veehouders sneller gemotiveerd zijn om gassensoren te implementeren die voldoende geschikt zijn voor een stalomgeving, gezien hun verantwoordelijkheid voor het waarborgen van de gezondheid van hun dieren en het milieu.
+
+
 
 \section{\IfLanguageName{dutch}{Onderzoeksvraag}{Research question}}%
 \label{sec:onderzoeksvraag}
+%Wees zo concreet mogelijk bij het formuleren van je onderzoeksvraag. Een onderzoeksvraag is trouwens iets waar nog niemand op dit moment een antwoord heeft (voor zover je kan nagaan). Het opzoeken van bestaande informatie (bv. ``welke tools bestaan er voor deze toepassing?'') is dus geen onderzoeksvraag. Je kan de onderzoeksvraag verder specifiëren in deelvragen. Bv.~als je onderzoek gaat over performantiemetingen, dan 
 
-Wees zo concreet mogelijk bij het formuleren van je onderzoeksvraag. Een onderzoeksvraag is trouwens iets waar nog niemand op dit moment een antwoord heeft (voor zover je kan nagaan). Het opzoeken van bestaande informatie (bv. ``welke tools bestaan er voor deze toepassing?'') is dus geen onderzoeksvraag. Je kan de onderzoeksvraag verder specifiëren in deelvragen. Bv.~als je onderzoek gaat over performantiemetingen, dan 
+\subsection{Hoofdonderzoeksvraag}%
+Zoals aangegeven in onderdeel ~\ref{sec:probleemstelling} zal deze studie zich focussen op de toepasbaarheid van goedkope sensoren om gassen in stalomgeving te meten, dit zal worden getest door een test set-up te maken die de luchtkwaliteit kan meten. Daarom luidt de centrale onderzoeksvraag: ``Hoe geschikt zijn goedkope sensoren om gassen in stalomgevingen te meten?''.
+
+\subsection{Deelonderzoeksvragen}%
+Aangezien de test set-up zal bestaan uit drie verschillende gassensoren zal deze hoofdonderzoeksvraag worden opgesplitst in verschillende deelvragen.
+
+\begin{itemize}
+    \item Hoe gaat een MQ-gassensor te werk?
+    \item Hoe kunnen deze gassensoren de luchtsamenstelling meten?
+    \item Zijn deze gassensoren geschikt om de luchtsamenstelling uit te lezen?
+\end{itemize}
+
 
 \section{\IfLanguageName{dutch}{Onderzoeksdoelstelling}{Research objective}}%
 \label{sec:onderzoeksdoelstelling}
 
-Wat is het beoogde resultaat van je bachelorproef? Wat zijn de criteria voor succes? Beschrijf die zo concreet mogelijk. Gaat het bv.\ om een proof-of-concept, een prototype, een verslag met aanbevelingen, een vergelijkende studie, enz.
+%Wat is het beoogde resultaat van je bachelorproef? Wat zijn de criteria voor succes? Beschrijf die zo concreet mogelijk. Gaat het bv.\ om een proof-of-concept, een prototype, een verslag met aanbevelingen, een vergelijkende studie, enz.
+
+De onderzoeksdoelstelling van deze studie is om via een test set-up te bepalen of MQ-gassensoren geschikt zijn voor het meten van de luchtsamenstelling. Er zal stap voor stap worden beschreven hoe deze test set-up werkt en zelf kan worden gemaakt. Ook zal er via data-analyse worden bepaald wat de voor- en nadelen zijn. De data die wordt gemeten zal live kunnen worden uitgelezen via het open-source platform ThingSpeak, en zal worden opgeslagen in een SQL-databank.
+
+
 
 \section{\IfLanguageName{dutch}{Opzet van deze bachelorproef}{Structure of this bachelor thesis}}%
 \label{sec:opzet-bachelorproef}
@@ -46,5 +77,6 @@ In Hoofdstuk~\ref{ch:stand-van-zaken} wordt een overzicht gegeven van de stand v
 In Hoofdstuk~\ref{ch:methodologie} wordt de methodologie toegelicht en worden de gebruikte onderzoekstechnieken besproken om een antwoord te kunnen formuleren op de onderzoeksvragen.
 
 % TODO: Vul hier aan voor je eigen hoofstukken, één of twee zinnen per hoofdstuk
+
 
 In Hoofdstuk~\ref{ch:conclusie}, tenslotte, wordt de conclusie gegeven en een antwoord geformuleerd op de onderzoeksvragen. Daarbij wordt ook een aanzet gegeven voor toekomstig onderzoek binnen dit domein.

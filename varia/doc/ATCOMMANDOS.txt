@@ -1,0 +1,18 @@
+AT+CIPSTART="TCP","192.168.1.6",80
+
+
+
+AT+CIPSEND=159
+
+
+GET /insertMQ4.php?MQ4_CO_ppm=1&MQ4_alcohol_ppm=2&MQ4_rook_ppm=3&MQ4_H2_ppm=4&MQ4_LPG_ppm=5&MQ4_CH4_ppm=6 HTTP/1.1
+Host: 192.168.1.6
+Connection: keep-alive
+
+POST /insertMQ4.php HTTP/1.1
+
+Host: 192.168.1.6
+
+Accept: */*
+
+Content-Length: 110

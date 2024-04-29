@@ -26,5 +26,43 @@
 %% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
 %% en geef het een gepaste titel.
 
-\lipsum[21-25]
+Zoals bij elke studie was de eerste fase een literatuurstudie om informatie te verwerven over het onderwerp. Zo begon dit onderzoek met een literatuurstudie in verband met stalgassen, types sensoren en de werking van de MQ-sensor. Met deze informatie werd aan de slag gegaan en werden de geschikte tools geselecteerd ~\ref{sec:selectie}. Hierna werd een eigen set-up opgezet waarmee de drie sensoren konden worden uitgelezen. Om de PPM waarden te verkrijgen werd onderzocht hoe deze sensors moesten worden gekalibreerd ~\ref{sec:kalibratie}. Vervolgens werd de ESP01 WiFi-module geanalyseerd en geconfigureerd. Parallel hieraan werd ThingSpeak opgezet en de databank gecreëerd ~\ref{sec:verzendendata}. Toen mijn co-promotor Pieter-Jan afkwam met de vraag of ik de warmte-koelcyclus van de MQ-7 eens kon bestuderen leek me dit interessant en heb ik deze geïmplementeerd in mijn set-up ~\ref{sec:warmte_koel}. Met de implementatie van de DHT22 kon de invloed van temperatuur en luchtvochtigheid op de metingen worden berekend ~\ref{sec:dht22}. Tenslotte werden de bekomen resultaten geanalyseerd via PowerBI ~\ref{sec:analysis}.
+
+
+\section{Selectie van geschikte tools}%
+\label{sec:selectie}
+
+Na de literatuurstudie over stalgassen, sensoren en de MQ-sensor, was de volgende stap de selectie van geschikte tools voor de realisatie van het onderzoek. De volgende lijst omvat zowel de hardware- als softwaretools die essentieel waren voor het opzetten van de test set-up.
+
+Hardware:
+\begin{itemize}
+    \item Arduino Mega: De Arduino Mega diende als microcontroller om de sensoren te besturen, data te verzamelen en te communiceren met de ESP01 WiFi-module.
+    \item Breadboard en nodige kabeltjes: Via een breadboard konden alle elektronische componenten worden verbonden zonder te solderen.
+    \item De MQ-4, MQ-7 en MQ-135 gassensoren en de DHT22 temperatuurs- en vochtigheidssensor.
+    \item 2 weerstanden van 10k$\Omega$ en een MOSFET-transistor van het type IRF2807: Gebruikt om de stroomtoevoer naar de verwarmingselementen van de MQ-7-sensor te regelen.
+    \item ESP01 WiFi-module en adapter: Via de ESP01 kon de verzamelde data naar de databank en Thingspeak worden verstuurd, de adapter werd gebruikt om de ESP01 op het breadboard te monteren.
+\end{itemize}
+
+Software:
+\begin{itemize}
+    \item De software naar keuze voor de databank was MySQL, met Apache kon deze worden gehost op een lokale server waardoor deze bereikbaar was voor de ESP01. De verzamelde data kon hierna worden geanalyseerd met PowerBI.
+    \item ThingSpeak werd gebruikt als IoT-platform om de live data te visualiseren.
+    \item Verder werd nog de Arduino IDE gebruikt voor de Arduino te programmeren en WebPlotDigitizer om de data uit grafieken te halen.
+\end{itemize}
+
+
+\section{Kalibreren van de MQ-sensors}%
+\label{sec:kalibratie}
+
+\section{Verzenden van data}%
+\label{sec:verzendendata}
+
+\section{Implementatie warmte-koelcyclus}%
+\label{sec:warmte_koel}
+
+\section{Implementatie DHT22-sensor}%
+\label{sec:dht22}
+
+\section{Analyse van de resultaten}%
+\label{sec:analysis}
 
