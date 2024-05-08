@@ -3,52 +3,76 @@
 % Meer info op https://github.com/HoGentTIN/latex-hogent-report
 %===============================================================================
 
-\documentclass[dutch,dit,thesis]{hogentreport}
-
-% TODO:
-% - If necessary, replace the option `dit`' with your own department!
-%   Valid entries are dbo, dbt, dgz, dit, dlo, dog, dsa, soa
-% - If you write your thesis in English (remark: only possible after getting
-%   explicit approval!), remove the option "dutch," or replace with "english".
+\documentclass[dutch,dit,thesis,export]{hogentreport}
+\usepackage{adjustbox}
 
 %% Pictures to include in the text can be put in the graphics/ folder
 \graphicspath{{graphics/}}
 
 \usepackage{listings}
+\usepackage{xcolor}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{code}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=code}
 %wiskunde allignering
 \usepackage{amsmath}
 
+
 %% For source code highlighting, requires pygments to be installed
 %% Compile with the -shell-escape flag!
-\usepackage[section]{minted}
+%\usepackage[section]{minted}
 %% If you compile with the make_thesis.{bat,sh} script, use the following
 %% import instead:
 %% \usepackage[section,outputdir=../output]{minted}
-\usemintedstyle{solarized-light}
+%\usemintedstyle{solarized-light}
 \definecolor{bg}{RGB}{253,246,227} %% Set the background color of the codeframe
 
 %% Change this line to edit the line numbering style:
-\renewcommand{\theFancyVerbLine}{\ttfamily\scriptsize\arabic{FancyVerbLine}}
+%\renewcommand{\theFancyVerbLine}{\ttfamily\scriptsize\arabic{FancyVerbLine}}
 
 %% Macro definition to load external java source files with \javacode{filename}:
-\newmintedfile[javacode]{java}{
-    bgcolor=bg,
-    fontfamily=tt,
-    linenos=true,
-    numberblanklines=true,
-    numbersep=5pt,
-    gobble=0,
-    framesep=2mm,
-    funcnamehighlighting=true,
-    tabsize=4,
-    obeytabs=false,
-    breaklines=true,
-    mathescape=false
-    samepage=false,
-    showspaces=false,
-    showtabs =false,
-    texcl=false,
-}
+%\newmintedfile[javacode]{java}{
+%    bgcolor=bg,
+%    fontfamily=tt,
+%    linenos=true,
+%    numberblanklines=true,
+%    numbersep=5pt,
+%    gobble=0,
+%    framesep=2mm,
+%    funcnamehighlighting=true,
+%    tabsize=4,
+%    obeytabs=false,
+%    breaklines=true,
+%    mathescape=false
+%    samepage=false,
+%    showspaces=false,
+%    showtabs =false,
+%    texcl=false,
+%}
 
 % Other packages not already included can be imported here
 
@@ -57,8 +81,7 @@
 \author{Kamiel Halsberghe}
 \supervisor{Dhr. J. Van Schoor} % VAN SCHOOR Johan 
 \cosupervisor{Dhr. P-J. De Temmerman} % Pieter-Jan De Temmerman
-\title[Optionele ondertitel]%
-    {De toepasbaarheid van goedkope sensoren om gassen in stalomgeving te meten}
+\title{De toepasbaarheid van goedkope sensoren om gassen in stalomgeving te meten}
 \academicyear{\advance\year by 2023 \the\year--\advance\year by 2024 \the\year}
 \examperiod{1}
 \degreesought{\IfLanguageName{dutch}{Professionele bachelor in de toegepaste informatica}{Bachelor of applied computer science}}
@@ -137,31 +160,15 @@
 \input{inleiding}
 \input{standvanzaken}
 \input{methodologie}
-\input{test set-up}
 
 % Voeg hier je eigen hoofdstukken toe die de ``corpus'' van je bachelorproef
 % vormen. De structuur en titels hangen af van je eigen onderzoek. Je kan bv.
 % elke fase in je onderzoek in een apart hoofdstuk bespreken.
 
-%\input{...}
-Het Thingspeak platform is volledig open-source. Om data te uploaden moet gebruik worden gemaakt van de API Write key van het kanaal waar de data op zal worden vertoond, en het IP adres van Thingspeak (184.106. 153.149).
 
-\begin{lstlisting}[language=python,caption=ESP01 voorbereiden]
-    AT+CWMODE=1     //WiFi modus correct instellen
-    
-    AT+CWJAP="netwerknaam","paswoord"   //ESP01 verbinden met WiFi netwerk
-    
-    AT+CIPMUX=1     //meerdere verbindingen inschakelen    
-\end{lstlisting}
+\input{test set-up}
+\input{analyse}
 
-\begin{lstlisting}[caption=Voorbeeld AT commando's naar Thingspeak]
-    AT+CIPSTART="TCP","184.106.153.149",80
-    AT+CIPSEND=41
-    > GET /update?key=MRUMJIBRR5SBF98K&MQ4=203    
-\end{lstlisting}
-
-%\input{...}
-%...
 
 \input{conclusie}
 
@@ -173,8 +180,12 @@ Het Thingspeak platform is volledig open-source. Om data te uploaden moet gebrui
 
 Het onderwerp van deze bachelorproef is gebaseerd op een onderzoeksvoorstel dat vooraf werd beoordeeld door de promotor. Dat voorstel is opgenomen in deze bijlage.
 
-%% TODO: 
-%\section*{Samenvatting}
+
+\section*{Samenvatting}
+
+    Dit onderzoek richt zich op het ontwikkelen en evalueren van goedkope gassensoren, met name MQ-sensoren, die via breakout boards de luchtkwaliteit in varkensstallen kunnen meten. De motivatie voor dit onderzoek ligt in de problematiek van schadelijke stalgassen die een bedreiging vormen voor zowel dieren als mensen, alsook voor de biodiversiteit in de omgeving van de stal. Omdat professionele gassensoren zeer duur zijn en niet thuishoren in een stalomgeving, zou deze studie als inspiratie kunnen dienen voor onderzoekers en fabrikanten van gassensoren, om nieuwe producten te maken die geschikt zijn om in een stalomgeving te werken. De methodologie omvat een literatuurstudie, de bouw en programmering van de sensor en databank, experimenten zowel binnen- als buitenshuis, en een analyse van de verzamelde gegevens. Uit dit onderzoek zou een breakoutboard met meerdere gassensoren komen die in staat is de luchtkwaliteit van een stal te bepalen.
+    
+    
 
 % Kopieer en plak hier de samenvatting (abstract) van je onderzoeksvoorstel.
 
@@ -182,9 +193,10 @@ Het onderwerp van deze bachelorproef is gebaseerd op een onderzoeksvoorstel dat 
 \input{../voorstel/voorstel-inhoud}
 
 %%---------- Andere bijlagen --------------------------------------------------
-% TODO: Voeg hier eventuele andere bijlagen toe. Bv. als je deze BP voor de
+% Voeg hier eventuele andere bijlagen toe. Bv. als je deze BP voor de
 % tweede keer indient, een overzicht van de verbeteringen t.o.v. het origineel.
-%\input{...}
+\chapter{Bijlage}
+\input{bijlage}
 
 %%---------- Backmatter, referentielijst ---------------------------------------
 

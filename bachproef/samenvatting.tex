@@ -25,24 +25,29 @@
 %
 % LET OP! Een samenvatting is GEEN voorwoord!
 
-%%---------- Nederlandse samenvatting -----------------------------------------
-%
-% TODO: Als je je bachelorproef in het Engels schrijft, moet je eerst een
-% Nederlandse samenvatting invoegen. Haal daarvoor onderstaande code uit
-% commentaar.
-% Wie zijn bachelorproef in het Nederlands schrijft, kan dit negeren, de inhoud
-% wordt niet in het document ingevoegd.
 
-\IfLanguageName{english}{%
-\selectlanguage{dutch}
-\chapter*{Samenvatting}
-
-\selectlanguage{english}
-}{}
 
 %%---------- Samenvatting -----------------------------------------------------
 % De samenvatting in de hoofdtaal van het document
 
 \chapter*{\IfLanguageName{dutch}{Samenvatting}{Abstract}}
+
+
+In stalomgevingen kunnen giftige gassen snel ophopen en voorkomen in gevaarlijke hoeveelheden. Op de markt zijn professionele gassensoren beschikbaar die veehouders vroegtijdig kunnen waarschuwen wanneer hun zij of hun dieren in gevaar zijn. Maar deze gassensoren dragen een hoog prijskaartje en hebben bovendien een slechte levensduur in een stalomgeving.
+
+Daarom is het doel van deze studie om te onderzoeken of goedkope gassensoren geschikt zijn om de luchtkwaliteit van een stal te bepalen. Deze goedkope gassensoren zijn de MQ-sensoren en zijn van het type halfgeleiders, deze zullen bestuurd worden via een microcontroller (Arduino). Hiervoor is de volgende onderzoeksvraag opgesteld: Hoe geschikt zijn goedkope sensoren om gassen in stalomgevingen te meten?. Verder is ook onderzocht geweest hoe een MQ-sensor exact te werk gaat, hoe deze gassensoren de luchtsamenstelling kunnen meten en hoe geschikt ze daarvoor zijn.
+
+Om deze vraag te beantwoorden is een test set-up gemaakt met 3 verschillende MQ-sensoren, namelijk de MQ-4, -7 en -135. Deze werden correct gekalibreerd en getest. Om al deze data op te slaan is er gebruik gemaakt van een ESP8266-01s WiFi module al de lezingen doorstuurde naar een databank en naar het open-source platform Thingspeak, waar deze data live kon worden uitgelezen.
+
+Er werden 2 testen uitgevoerd in de kalibratiesetup van ILVO. Zo werd getest hoe gevoelig en accuraat de sensoren zijn bij blootstelling aan ammoniak en koolstofdioxide.
+%analyse
+%conclusie
+
+
+
+
+
+
+
 
 

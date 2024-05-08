@@ -14,11 +14,25 @@
 % Heeft het onderzoek geleid tot nieuwe vragen die uitnodigen tot verder 
 %onderzoek?
 
-I've looked into this a bit, and here are my comments:
-1.	The MQ-7 module is so poorly documented that it is not a great choice to work with
-2.	There are other (qualitative) sensors (such as the mics5524) that seem simpler to work with, and don't appear to have any clear disadvantage vs. the MQ-7.
-3.	If I were to take the time to calibrate the MQ-7 fully, it would only really be of use to me. Unless I mapped out the entire RH, temperature, CO concentration, and interfering gases profile, it is unlikely my results would be directly applicable to anyone else. Additionally, even if I did so, anyone looking to make quantitative measurements would (hopefully) repeat some of my results under their exact conditions with their own sensor to ensure they got the same data. By the time this was complete, their own data would be more useful for them than what I could provide.
-4.	In case it is of help to anyone, I am posting the circuit that was suggested by Leo. I have built this circuit, and it worked exactly as expected (thanks Leo). While I did physically build the circuit, for this group, I am also posting the results of the circuit simulation in case anyone finds it useful.
+%centrale onderzoeksvraag: Hoe geschikt zijn goedkope sensoren om gassen in stalomgevingen te meten?
+%deelonderzoeksvragen:  - Hoe gaat een MQ-gassensor te werk?
+%                       - Hoe kunnen deze gassensoren de luchtsamenstelling meten?
+%                       - Zijn deze gassensoren geschikt om de luchtsamenstelling uit te lezen?
+%                       - Hoe werkt een warmte-koelcyclus in een sensor en heeft dit voordelen?
+
+
+
+In deze studie werd onderzocht hoe geschikt goedkope sensoren zijn om gassen in stalomgeving te meten. De geteste gassensoren zijn de goedkope MQ-sensoren, die kunnen worden bestuurd via een microcontroller zoals Arduino. Er werd onderzocht welke gassen er in een stalomgeving voorkomen en hoe een MQ-sensor exact werkt. Via de informatie uit de datasheets werd berekend hoe deze sensor de luchtsamenstelling kon meten. 
+Zo is er tot de conclusie gekomen dat deze MQ-sensoren niet geschikt zijn om de luchtsamenstelling uit te lezen. De MQ-sensoren zijn zeer instabiel en de luchtsamenstelling is een berekende schatting op basis van 1 waarde. 
+%TODO Na de R\textsubscript{0}-waarde te berekenen kunnen sommige gassen wel ongeveer correct worden ingeschat, zoals bijvoorbeeld CO\textsubscript{2}, Maar andere gassen worden totaal verkeerd ingeschat. 
+Wat deze gassensoren wel kunnen is detecteren of er een te grote hoeveelheid gas aanwezig is, dit kan ze bruikbaar maken als een goedkope monitor die via een alarmsignaal zou kunnen laten weten wanneer de omgeving een te slechte luchtkwaliteit heeft.
+Ook bevatten de datasheets niet heel veel informatie waardoor het kalibratieproces moeilijk kan verlopen. 
+
+Hiernaast werd ook de toepassing van een warmte-koelcyclus uitgetest.
+%TODO stabieler dan andere?
+Het onderscheiden van verschillende gassen via de curve die door deze warmte-koelcyclus wordt gemaakt is iets wat zeker verder onderzocht kan worden. Aangezien elk gas zich op een andere manier gedraagt en TODO
+
+
 
 
 

@@ -26,7 +26,12 @@
 %% Maak voor elke fase (behalve het literatuuronderzoek) een NIEUW HOOFDSTUK aan
 %% en geef het een gepaste titel.
 
-Zoals bij elke studie was de eerste fase een literatuurstudie om informatie te verwerven over het onderwerp. Zo begon dit onderzoek met een literatuurstudie in verband met stalgassen, types sensoren en de werking van de MQ-sensor. Met deze informatie werd aan de slag gegaan en werden de geschikte tools geselecteerd ~\ref{sec:selectie}. Hierna werd een eigen set-up opgezet waarmee de drie sensoren konden worden uitgelezen. Om de PPM waarden te verkrijgen werd onderzocht hoe deze sensors moesten worden gekalibreerd ~\ref{sec:kalibratie}. Vervolgens werd de ESP01 WiFi-module geanalyseerd en geconfigureerd. Parallel hieraan werd ThingSpeak opgezet en de databank gecreëerd ~\ref{sec:verzendendata}. Toen mijn co-promotor Pieter-Jan afkwam met de vraag of ik de warmte-koelcyclus van de MQ-7 eens kon bestuderen leek me dit interessant en heb ik deze geïmplementeerd in mijn set-up ~\ref{sec:warmte_koel}. Met de implementatie van de DHT22 kon de invloed van temperatuur en luchtvochtigheid op de metingen worden berekend ~\ref{sec:dht22}. Tenslotte werden de bekomen resultaten geanalyseerd via PowerBI ~\ref{sec:analysis}.
+Zoals bij elke studie was de eerste fase een literatuurstudie om informatie te verwerven over het onderwerp. Zo begon dit onderzoek met een literatuurstudie in verband met stalgassen, verschillende soorten sensoren en de werking van de MQ-sensor. Met deze informatie werd aan de slag gegaan en werden de geschikte tools geselecteerd, zoals beschreven in sectie~\ref{sec:selectie}.
+Vervolgens werd een simpele set-up opgezet waarmee de drie sensoren konden worden uitgelezen. Om de PPM waarden te verkrijgen werd opnieuw een literatuurstudie gedaan om te onderzoeken hoe deze sensors moesten worden gekalibreerd~\ref{sec:hoe-luchtsamenstelling meten}.
+In de volgende fase werd de ESP01 WiFi-module geanalyseerd en geconfigureerd. Parallel hieraan werd ThingSpeak opgezet en de databank gecreëerd zodat de ESP01 een plaats had om de verwerkte data naartoe te sturen.
+Een interessante wending in het onderzoek kwam toen mijn co-promotor Pieter-Jan voorstelde om de warmte-koelcyclus van de MQ-7 te bestuderen, dit leek me interessant en dus was de volgende fase om dit te onderzoeken en te implementeren in mijn set-up. Dit wordt besproken in sectie~\ref{sec:warmte-koelcyclus} van de literatuurstudie.
+In de daaropvolgende fase heb ik met informatie uit de vorige literatuurstudie de DHT22 sensor geïmplementeerd. Er is onderzocht geweest wat de invloed is van temperatuur en luchtvochtigheid op de metingen. Ook is er berekend hoe dit kan worden gecorrigeerd in sectie~\ref{sec:warmte-koelcyclus}.
+In de voorlaatste fase is de finale code geschreven en zijn de testen uitgevoerd. De data die hier is bekomen is in de laatste fase geanalyseerd via PowerBI.
 
 
 \section{Selectie van geschikte tools}%
@@ -51,18 +56,5 @@ Software:
 \end{itemize}
 
 
-\section{Kalibreren van de MQ-sensors}%
-\label{sec:kalibratie}
 
-\section{Verzenden van data}%
-\label{sec:verzendendata}
-
-\section{Implementatie warmte-koelcyclus}%
-\label{sec:warmte_koel}
-
-\section{Implementatie DHT22-sensor}%
-\label{sec:dht22}
-
-\section{Analyse van de resultaten}%
-\label{sec:analysis}
 

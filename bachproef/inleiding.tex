@@ -42,15 +42,16 @@ Dit onderzoek richt zich naar fabrikanten van gassensoren, die deze studie kunne
 %Wees zo concreet mogelijk bij het formuleren van je onderzoeksvraag. Een onderzoeksvraag is trouwens iets waar nog niemand op dit moment een antwoord heeft (voor zover je kan nagaan). Het opzoeken van bestaande informatie (bv. ``welke tools bestaan er voor deze toepassing?'') is dus geen onderzoeksvraag. Je kan de onderzoeksvraag verder specifiëren in deelvragen. Bv.~als je onderzoek gaat over performantiemetingen, dan 
 
 \subsection{Hoofdonderzoeksvraag}%
-Zoals aangegeven in onderdeel ~\ref{sec:probleemstelling} zal deze studie zich focussen op de toepasbaarheid van goedkope sensoren om gassen in stalomgeving te meten, dit zal worden getest door een test set-up te maken die de luchtkwaliteit kan meten. Daarom luidt de centrale onderzoeksvraag: ``Hoe geschikt zijn goedkope sensoren om gassen in stalomgevingen te meten?''.
+Zoals aangegeven in onderdeel~\ref{sec:probleemstelling} zal deze studie zich focussen op de toepasbaarheid van goedkope sensoren om gassen in stalomgeving te meten, dit zal worden getest door een test set-up te maken die de luchtkwaliteit kan meten. Daarom luidt de centrale onderzoeksvraag: ``Hoe geschikt zijn goedkope sensoren om gassen in stalomgevingen te meten?''.
 
 \subsection{Deelonderzoeksvragen}%
-Aangezien de test set-up zal bestaan uit drie verschillende gassensoren zal deze hoofdonderzoeksvraag worden opgesplitst in verschillende deelvragen.
+Aangezien de hoofdonderzoeksvraag vrij breed is zal deze worden opgesplitst in verschillende deelvragen.
 
 \begin{itemize}
     \item Hoe gaat een MQ-gassensor te werk?
     \item Hoe kunnen deze gassensoren de luchtsamenstelling meten?
     \item Zijn deze gassensoren geschikt om de luchtsamenstelling uit te lezen?
+    \item Hoe werkt een warmte-koelcyclus in een sensor en heeft dit voordelen?
 \end{itemize}
 
 
@@ -59,7 +60,7 @@ Aangezien de test set-up zal bestaan uit drie verschillende gassensoren zal deze
 
 %Wat is het beoogde resultaat van je bachelorproef? Wat zijn de criteria voor succes? Beschrijf die zo concreet mogelijk. Gaat het bv.\ om een proof-of-concept, een prototype, een verslag met aanbevelingen, een vergelijkende studie, enz.
 
-De onderzoeksdoelstelling van deze studie is om via een test set-up te bepalen of MQ-gassensoren geschikt zijn voor het meten van de luchtsamenstelling. Er zal stap voor stap worden beschreven hoe deze test set-up werkt en zelf kan worden gemaakt. Ook zal er via data-analyse worden bepaald wat de voor- en nadelen zijn. De data die wordt gemeten zal live kunnen worden uitgelezen via het open-source platform ThingSpeak, en zal worden opgeslagen in een SQL-databank.
+De onderzoeksdoelstelling van deze studie is om via een test set-up te bepalen of MQ-gassensoren geschikt zijn voor het meten van de luchtsamenstelling. Er zal stap voor stap worden beschreven hoe deze test set-up werkt en zelf kan worden nagemaakt. Ook zal er via data-analyse worden bepaald wat de voor- en nadelen zijn. De data die wordt gemeten zal live kunnen worden uitgelezen via het open-source platform ThingSpeak, en zal worden opgeslagen in een SQL-databank.
 
 
 
@@ -78,5 +79,9 @@ In Hoofdstuk~\ref{ch:methodologie} wordt de methodologie toegelicht en worden de
 
 % TODO: Vul hier aan voor je eigen hoofstukken, één of twee zinnen per hoofdstuk
 
+In Hoofdstuk~\ref{ch:test_setup} wordt de daadwerkelijke test set-up gemaakt bestaande uit de MQ-sensoren, een DHT22 die temperatuur en luchtvochtigheid meet en een ESP8266-01s WiFi module.
 
-In Hoofdstuk~\ref{ch:conclusie}, tenslotte, wordt de conclusie gegeven en een antwoord geformuleerd op de onderzoeksvragen. Daarbij wordt ook een aanzet gegeven voor toekomstig onderzoek binnen dit domein.
+In Hoofdstuk~\ref{ch:analyse} worden de verzamelde gegevens geanalyseerd aan de hand van PowerBI.
+
+
+In Hoofdstuk~\ref{ch:conclusie}, tenslotte, wordt aan de hand van de analyse een conclusie gegeven en een antwoord geformuleerd op de onderzoeksvragen. Daarbij wordt ook een aanzet gegeven voor toekomstig onderzoek binnen dit domein.
