@@ -10,7 +10,7 @@ Dit hoofdstuk biedt een gedetailleerde beschrijving van het proces waarmee de ui
 \section{Kalibratie van de sensoren}%
 \label{sec:kalibratie}
 
-Om de MQ-sensoren te kalibreren is het zeer belangrijk dat ze voor de eerste keer gebruik een voorverwarmperdiode van 24-48u hebben gehad, hierna volstaat een opwarmperiode van 5 minuten bij elke keer dat ze gebruikt worden. Hierna moet de R\textsubscript{0} waarde voor iedere sensor worden berekent, het is belangrijk dat dit gedaan wordt in schone lucht. In sectie~\ref{sec:hoe-luchtsamenstelling meten} werd getoond hoe de R\textsubscript{0} waarde kan worden berekend. In de Arduino functie in bijlage (~\ref{lst:kalibratie}) is te zien hoe dit gebeurt volgens de werkwijze in sectie~\ref{sec:hoe-luchtsamenstelling meten}.
+Om de MQ-sensoren te kalibreren is het zeer belangrijk dat ze voor de eerste keer gebruik een voorverwarmperdiode van 24-48u hebben gehad, hierna volstaat een opwarmperiode van 5 minuten bij elke keer dat ze gebruikt worden. Vervolgens moet de R\textsubscript{0} waarde voor iedere sensor worden berekend, het is belangrijk dat dit gedaan wordt in schone lucht. Sectie~\ref{sec:hoe-luchtsamenstelling meten} kon worden gedaan. In de Arduino functie in bijlage (\ref{lst:kalibratie}) is te zien hoe dit gebeurt volgens de werkwijze in sectie~\ref{sec:hoe-luchtsamenstelling meten}.
 
 Nadat dit script enige tijd heeft gedraaid kan R\textsubscript{0} worden bepaald via het gemiddelde te nemen. In figuur~\ref{fig:avg_van_R0} is te zien hoe dit gemakkelijk kan worden gedaan aan de hand van een SQL-tabel.
 
@@ -20,9 +20,7 @@ Nadat dit script enige tijd heeft gedraaid kan R\textsubscript{0} worden bepaald
     \label{fig:avg_van_R0}
 \end{figure}
 
-Nu de R\textsubscript{0} waarden zijn bepaald kan er per gas de ppm-waarde worden berekend. In sectie~\ref{sec:hoe-luchtsamenstelling meten} wordt uitgelegd hoe de waarden van de gevoeligheidscurves eerst moeten worden bepaald, en zoals reeds aangehaald wordt dit het best gedaan via een tool zoals WebPlotDigitizer
-%TODO bron webplotdigitizer
-. Hier kan een grafiek worden ingeladen waarna de x- en y-as moeten worden uitgelijnd, het is belangrijk dat deze assen worden ingesteld als logaritmisch (zie figuur~\ref{fig:x_en_y}). Vervolgens moeten er per gas 2 punten worden aangeduid, die liefst zo ver mogelijk van elkaar liggen (figuur~\ref{fig:voorbeeld}).
+Nu de R\textsubscript{0} waarden zijn bepaald kan er per gas de ppm-waarde worden berekend. In sectie~\ref{sec:hoe-luchtsamenstelling meten} wordt uitgelegd hoe de waarden van de gevoeligheidscurves eerst moeten worden bepaald, en zoals reeds aangehaald wordt dit het best gedaan via een tool zoals WebPlotDigitizer \autocite{Rohatgi2024}. Hier kan een grafiek worden ingeladen waarna de x- en y-as moeten worden uitgelijnd, het is belangrijk dat deze assen worden ingesteld als logaritmisch (zie figuur~\ref{fig:x_en_y}). Vervolgens moeten er per gas 2 punten worden aangeduid, die liefst zo ver mogelijk van elkaar liggen (figuur~\ref{fig:voorbeeld}).
 
 \begin{figure}[h]
     \includegraphics[scale=0.25, center]{XenY.png}
@@ -36,9 +34,9 @@ Nu de R\textsubscript{0} waarden zijn bepaald kan er per gas de ppm-waarde worde
     \label{fig:voorbeeld}
 \end{figure}
 
-Met deze waarden kan er vervolgens worden verdergegaan. Zo zie je in script~\ref{lst:ppm_mq135} hoe de ppm voor alle gassen van de MQ-135 sensor worden berekend. Het is belangrijk aan te halen dat dit geen accurate resultaten geeft. Dit is enkel een berekende schatting van de luchtsamenstelling op basis van de gegeven informatie in de datasheet en de waarde die de MQ-sensor terug geeft.
+Met deze waarden kan er vervolgens worden verdergegaan. Zo zie je in script~\ref{lst:ppm_mq135} hoe op deze manier de ppm voor alle gassen van de MQ-135 sensor worden berekend.
 
-
+\pagebreak
 
 \section{Verzenden van data}%
 \label{sec:verzendendata}
@@ -65,7 +63,7 @@ ESP.println("AT+RST");
 Het Thingspeak platform is volledig open-source. Gebruikers kunnen gratis kanalen aanmaken waarnaar data kan worden geschreven die live wordt getoond. Om data te uploaden moet gebruik worden gemaakt van het IP adres van Thingspeak (184.106.153.149) en de API Write key van het kanaal waar de data op zal worden vertoond.
 
 In Thingspeak zelf kunnen tot 8 velden worden ingesteld. Figuur~\ref{tab:velden} toont welke veld zijn gebruikt in dit project.
-\begin{table}[htbp]
+\begin{table}[h]
     \centering
     \begin{tabular}{|c|c|}
         \hline
@@ -85,7 +83,7 @@ In Thingspeak zelf kunnen tot 8 velden worden ingesteld. Figuur~\ref{tab:velden}
     \label{tab:velden}
 \end{table}
 
-Om data te versturen via de ESP01 moet de WiFi module de volgende commando's ontvangen:
+Om data te versturen via de ESP01 moeten de de volgende commando's naar de WiFi module worden verstuurd:
 \begin{lstlisting}[language=Java,caption={ESP01 naar Thingspeak}]
 AT+CIPSTART="TCP","184.106.153.149",80  // verbinding maken met Thingspeak via TCP
     CONNECT
@@ -101,24 +99,20 @@ AT+CIPCLOSE  //verbinding sluiten
     OK
 \end{lstlisting}
 
-Hierna worden deze waarden toegevoegd aan Thingspeak. Het visualiseren van de data kan via de standaard visualisaties van Thingspeak, maar voor meer controle kunnen er via Matlab
-%TODO bron @software{MATLAB,
-%    year = {2022},
-%    author = {The MathWorks Inc.},
-%    title = {MATLAB version: 9.13.0 (R2022b)},
-%    publisher = {The MathWorks Inc.},
-%    address = {Natick, Massachusetts, United States},
-%    url = {https://www.mathworks.com}
-%}
-eigen visualisaties worden gemaakt. De volgende Matlab code in sectie~\ref{sec:matlab} in de bijlage toont aan hoe al de velden op 1 scherm kunnen worden getoond.
-Het uiteindelijke resultaat is te zien is figuur XX:
-%TODO foto thingspeak graphs
+Hierna worden deze waarden toegevoegd aan Thingspeak. Het visualiseren van de data kan via de standaard visualisaties van Thingspeak, maar voor meer controle kunnen er via Matlab \autocite{MATLAB} eigen visualisaties worden gemaakt. De Matlab code in sectie~\ref{sec:matlab} van de bijlage toont aan hoe al de velden op 1 scherm kunnen worden getoond.
+Het uiteindelijke resultaat is te zien is figuur~\ref{fig:matlab}:
+
+\begin{figure}[h]
+    \includegraphics[scale=0.5, center]{matlab.png}
+    \caption[Thingspeak live]{Een live weergave van de waarden van de MQ-sensoren via Thingspeak}
+    \label{fig:matlab}
+\end{figure}
 
 
 \subsection{Verzenden naar databank}
 \label{subsec:database}
 
-Om de data te kunnen analyseren is het essentieel dat ze ook naar een databank kan worden verstuurd. Deze databank werd opgezet via MySQL (\ref{fig:SQLtabellen}). Zo kreeg iedere MQ-sensor een eigen tabel met elk al hun gasmetingen en een datetime-object die aantoont wanneer dit gelezen is. Ook de temperatuur en luchtvochtigheid worden opgeslagen, in de DHT22 tabel. Verder is er nog een tabel voor de R\textsubscript{0} waarden en voor de analoge waarden van de MQ7, die verder zal besproken worden in sectie~\ref{sec:warmte_koel}.
+Om de data te kunnen analyseren via PowerBI is het essentieel dat ze ook naar een databank kan worden verstuurd. Deze databank werd opgezet via MySQL (\ref{fig:SQLtabellen}). Zo kreeg iedere MQ-sensor een eigen tabel met al hun gasmetingen en een datetime-object die aantoont wanneer dit gelezen is. Ook is er een DHT22 tabel, waar de temperatuur en luchtvochtigheid worden opgeslagen. Verder is er nog een tabel voor de R\textsubscript{0} waarden en voor de analoge waarden van de MQ7, deze zal verder worden besproken in sectie~\ref{sec:warmte_koel}.
 
 \begin{figure}[h]
     \includegraphics[scale=0.9, center]{SQLtabellen.png}
@@ -202,21 +196,17 @@ AT+CIPSEND=236  //grootte van het bericht
 \label{sec:warmte_koel}
 
 
-Zoals besproken in sectie~\ref{sec:warmte-koelcyclus} is het werkingsprincipe van de MQ-7 sensor anders dan de andere sensoren. Voor optimale resultaten moet er  gebruik worden gemaakt van een warmte-koelcyclus. In het onderzoek van 
-%TODO calibrationandimplemantationofMQ7 pdf bron
-wordt duidelijk uitgelegd hoe deze warmte-koelcyclus kan worden geïmplementeerd. 
+Zoals besproken in sectie~\ref{sec:warmte-koelcyclus} is het werkingsprincipe van de MQ-7 sensor anders dan de andere sensoren. Voor optimale resultaten moet er  gebruik worden gemaakt van een warmte-koelcyclus. In het onderzoek van \textcite{Kobbekaduwa2021} wordt duidelijk uitgelegd hoe deze warmte-koelcyclus kan worden geïmplementeerd. 
 
-In figuur~\ref{fig:heatcool_circuit} wordt aangetoond aan hoe het circuit diagram uit moet uit zien volgens %TODO calibrationandimplemantationofMQ7 pdf bron
+In figuur~\ref{fig:heatcool_circuit} wordt aangetoond aan hoe het circuit diagram uit moet uit zien volgens \textcite{Kobbekaduwa2021}.
 
 \begin{figure}[h]
     \includegraphics[scale=0.3, center]{heatcool_circuit.png}
-    \caption[Circuit warmte-koelcyclus]{Het circuit voor een warmte-koelcyclus
-    %TODO calibrationandimplemantationofMQ7 pdf bron
-    }
+    \caption[Circuit warmte-koelcyclus]{Het circuit voor een warmte-koelcyclus \autocite{Kobbekaduwa2021}}
     \label{fig:heatcool_circuit}
 \end{figure}
 
-In dit circuit is te zien hoe de opwarming van de MQ-7 sensor gebeurt, de Arduino stuurt de MOSFET transistor aan om zo het voltage van de MQ-7 te veranderen. De MQ-7 moet 60 seconden lang 5V toegediend krijgen om alle gassen te verdampen en de sensor te reinigen. In de tweede fase krijgt de sensor 90 seconden lang 1.4V toegediend, hier kunnen gassen opnieuw worden geabsorbeerd. De volgende listing toont aan hoe kan worden gedaan in Arduino code:
+In dit circuit is te zien hoe de opwarming van de MQ-7 sensor gebeurt. De Arduino stuurt de MOSFET transistor aan om zo het voltage van de MQ-7 te veranderen. De MQ-7 moet 60 seconden lang 5V toegediend krijgen om alle gassen te verdampen en de sensor te reinigen. Hierna krijgt de sensor 90 seconden lang 1.4V toegediend, hier worden de gassen gemeten. De volgende listing toont aan hoe kan worden gedaan in Arduino code volgens de werkwijze van \textcite{Kobbekaduwa2021}:
 
 \begin{lstlisting}[language=Java,caption={Warmte-koelcyclus MQ-7}]
 //pinnen vd sensoren 
@@ -242,7 +232,7 @@ void loop() {
         
 \end{lstlisting}
 
-Nu dit geïmplementeerd is kunnen deze waarden ook naar de database worden gestuurd voor een analyse. De grafiek (zoals bijvoorbeeld die van figuur~\ref{fig:mq7_heatcool_vb}) die ontstaat tijdens deze cyclus roept vragen op zoals: zijn verschillende gassen te onderscheiden in deze grafiek? En welke invloed heeft de temperatuur en vochtigheidsgraad?
+Nu dit geïmplementeerd is kunnen deze waarden ook naar de database worden gestuurd voor een analyse. De grafiek (zoals bijvoorbeeld die van figuur~\ref{fig:mq7_heatcool_vb}) die ontstaat tijdens deze cyclus roept vragen op zoals: zijn verschillende gassen te onderscheiden in deze grafiek? En welke invloed hebben de temperatuur en vochtigheidsgraad?
 
 \begin{figure}[h]
     \includegraphics[scale=0.5, center]{mq7_heatcool_vb.png}
@@ -251,7 +241,7 @@ Nu dit geïmplementeerd is kunnen deze waarden ook naar de database worden gestu
 \end{figure}
 
 
-Omdat dit interessante zaken kunnen zijn voor een analyse heb ik ze getest. Zo zijn er experimenten opgezet met 3 verschillende gassen waar de MQ-7 gevoelig voor is: CO, alcohol en LPG. Deze experimenten zijn uitgevoerd in een normale omgeving en een omgeving met een hoge vochtigheidsgraad.
+Omdat dit interessante zaken kunnen zijn voor een analyse zijn ze getest geweest. Zo zijn er experimenten opgezet met 3 verschillende gassen waar de MQ-7 gevoelig voor is: CO, alcohol en LPG. Deze experimenten zijn uitgevoerd in een normale omgeving en een omgeving met een hoge vochtigheidsgraad.
 
 %Een van de hoofdbestanddelen van rook is koolstofmonoxide, zo werd er door de rook van een brandende lucifer een hoge ppm CO gesimuleerd. Zo is er voor alcohol de damp van ontsmettingsalcohol gebruikt, en voor LPG de damp van aanstekerbenzine. De experimenten in normale omgeving werden buiten uitgevoerd, en voor de hoge vochtigheidsgraad is er in een vochtige badkamer gewerkt.
 
@@ -321,11 +311,6 @@ De finale code bestaat uit 4 scripts. In de eerste wordt de R\textsubscript{0} w
 
 Al deze scripts kunnen worden uitgevoerd met het circuit afgebeeld in figuur~\ref{fig:arduino_circuit}.
 
-\begin{figure}[h]
-    \includegraphics[scale=0.16, center]{arduino_circuit.png}
-    \caption[Circuit test set-up]{Finale circuit van de test set-up}
-    \label{fig:arduino_circuit}
-\end{figure}
 
 \begin{figure}[h]
     \includegraphics[scale=0.16, center]{voor_en_achterkant.png}
@@ -333,18 +318,25 @@ Al deze scripts kunnen worden uitgevoerd met het circuit afgebeeld in figuur~\re
     \label{fig:voor_en_achterkant}
 \end{figure}
 
+\begin{figure}[h]
+    \includegraphics[scale=0.16, center]{arduino_circuit.png}
+    \caption[Circuit test set-up]{Finale circuit van de test set-up}
+    \label{fig:arduino_circuit}
+\end{figure}
 
-Deze test set-up werd uiteindelijk getest in een kalibratiesetup van ILVO. Hier worden andere gassensoren gekalibreerd die worden opgehangen in stallen, indien deze sensoren geen correcte resultaten geven kunnen ze zo worden bijgesteld. Zo zijn er 2 testen uitgevoerd, een met ammoniak en een met koolstofdioxide. Bij deze kalibratie zitten al de gassensoren in een luchtdichte kist waar gekende gasconcentraties naartoe worden gestuurd. Deze gasconcentraties worden terwijl ook geanalyseerd door een Picarro gassensor. Dit is een zeer nauwkeurige gassensor met een prijskaartje van 150.000€. De Picarro gassensor werkt op basis van een infraroodlaser en kan N\textsubscript{2}0, CH\textsubscript{4}, NH\textsubscript{3} en CO\textsubscript{2} meten.
+\pagebreak
 
-In de eerste test werd NH\textsubscript{3} aangeboden, dit was interessant om te testen omdat NH\textsubscript{3} een veelvoorkomende en gevaarlijke stalgas is. In de gevoeligheidsgrafieken van de 3 MQ-sensoren staat geen NH\textsubscript{3}, zo werd dus getest of de sensoren daadwerkelijk geen NH\textsubscript{3} konden meten. En indien dit wel lukte, welke sensor hier het beste op reageerde. De NH\textsubscript{3} werd toegediend in 5 fases, in de eerste fase werd een halfuur lang niks aangeboden. Daarna werd 1, 3 en 5 ppm NH\textsubscript{3} per anderhalf uur toegediend. In de laatste fase werd terug voor een halfuur 0 ppm aangeboden om te testen hoe snel de sensoren terug zouden stabiliseren.
+Deze test set-up werd uiteindelijk getest in een kalibratiesetup van ILVO. In deze set-up worden andere gassensoren gekalibreerd die vervolgens worden opgehangen in stallen. Indien deze sensoren geen correcte resultaten geven kunnen ze zo worden bijgesteld. Zo zijn er 2 testen uitgevoerd, een met ammoniak en een met koolstofdioxide. Bij deze kalibratie zitten al de gassensoren in een luchtdichte kist waar gekende gasconcentraties naartoe worden gestuurd. Deze gasconcentraties worden terwijl ook geanalyseerd door een Picarro gassensor. Dit is een zeer nauwkeurige gassensor met een prijskaartje van 150.000€. De Picarro gassensor werkt op basis van een infraroodlaser en kan N\textsubscript{2}O, CH\textsubscript{4}, NH\textsubscript{3} en CO\textsubscript{2} meten.
 
-In de tweede test werd CO\textsubscript{2} aangeboden, hier werd vooral getest hoe accuraat de MQ-135 is die CO\textsubscript{2} meet. Maar ook werd getest hoe hard de andere sensoren hier op reageerden. In de beide testen werd de correctiefactor voor temperatuur en luchtvochtigheid apart opgeslagen om te zien hoe veel invloed dit had.
+In de eerste test werd NH\textsubscript{3} aangeboden, dit was interessant om te testen omdat NH\textsubscript{3} een veelvoorkomende en gevaarlijk stalgas is. In de gevoeligheidsgrafieken van de 3 MQ-sensoren staat geen NH\textsubscript{3}, zo werd dus getest of de sensoren daadwerkelijk geen NH\textsubscript{3} konden meten. En indien dit wel lukte, welke sensor hier het beste op reageerde. De NH\textsubscript{3} werd toegediend in 5 fases, in de eerste fase werd een half uur lang niks aangeboden. Daarna werd 1, 3 en 5 ppm NH\textsubscript{3} per anderhalf uur toegediend. In de laatste fase werd terug voor een half uur 0 ppm aangeboden om te testen hoe snel de sensoren terug zouden stabiliseren.
+
+In de tweede test werd CO\textsubscript{2} aangeboden, hier werd vooral getest hoe accuraat de MQ-135 is die CO\textsubscript{2} meet. Maar ook werd getest hoe hard de andere sensoren hier op reageerden. Tijdens deze test is er in 3 fases gewerkt. Zo werd om het uur per fase 0 ppm, 500 ppm en 2000 ppm CO\textsubscript{2} aangeboden.
 
 De resultaten van deze twee testen worden besproken in sectie~\ref{sec:nauwkeurigheid}.
 
 \begin{figure}[h]
     \includegraphics[scale=0.3, center]{test.png}
-    \caption[Kalibratiesetup]{De complete kalibratiesetup bij ILVO met de Picarro gassensor (links) en de luchtdichte kist met de andere gassensoren (rechts)}
+    \caption[Kalibratiesetup]{De kalibratiesetup bij ILVO met de Picarro gassensor (links) en de luchtdichte kist met de gassensoren (rechts)}
     \label{fig:test}
 \end{figure}
 

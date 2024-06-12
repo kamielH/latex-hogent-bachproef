@@ -33,15 +33,19 @@
 \chapter*{\IfLanguageName{dutch}{Samenvatting}{Abstract}}
 
 
-In stalomgevingen kunnen giftige gassen snel ophopen en voorkomen in gevaarlijke hoeveelheden. Op de markt zijn professionele gassensoren beschikbaar die veehouders vroegtijdig kunnen waarschuwen wanneer hun zij of hun dieren in gevaar zijn. Maar deze gassensoren dragen een hoog prijskaartje en hebben bovendien een slechte levensduur in een stalomgeving.
+In stalomgevingen kunnen giftige gassen snel ophopen en in gevaarlijke hoeveelheden voorkomen. Op de markt zijn professionele gassensoren beschikbaar die veehouders vroegtijdig kunnen waarschuwen wanneer zij of hun dieren in gevaar zijn. Maar deze gassensoren dragen een hoog prijskaartje en hebben bovendien een slechte levensduur in een stalomgeving.
 
-Daarom is het doel van deze studie om te onderzoeken of goedkope gassensoren geschikt zijn om de luchtkwaliteit van een stal te bepalen. Deze goedkope gassensoren zijn de MQ-sensoren en zijn van het type halfgeleiders, deze zullen bestuurd worden via een microcontroller (Arduino). Hiervoor is de volgende onderzoeksvraag opgesteld: Hoe geschikt zijn goedkope sensoren om gassen in stalomgevingen te meten?. Verder is ook onderzocht geweest hoe een MQ-sensor exact te werk gaat, hoe deze gassensoren de luchtsamenstelling kunnen meten en hoe geschikt ze daarvoor zijn.
+Daarom is het doel van deze studie om te onderzoeken of goedkope gassensoren geschikt zijn om de luchtkwaliteit van een stal te bepalen. Deze goedkope gassensoren zijn de MQ-sensoren en zijn van het type halfgeleiders, deze zullen bestuurd worden via een microcontroller (Arduino). Hiervoor is de volgende onderzoeksvraag opgesteld: Hoe geschikt zijn goedkope sensoren om gassen in stalomgevingen te meten? Verder is ook onderzocht geweest hoe deze gassensoren de luchtsamenstelling kunnen meten en hoe geschikt ze daarvoor zijn. Ten slotte werd de werking van een warmte-koelcyclus besproken samen met zijn voor- en nadelen.
 
-Om deze vraag te beantwoorden is een test set-up gemaakt met 3 verschillende MQ-sensoren, namelijk de MQ-4, -7 en -135. Deze werden correct gekalibreerd en getest. Om al deze data op te slaan is er gebruik gemaakt van een ESP8266-01s WiFi module al de lezingen doorstuurde naar een databank en naar het open-source platform Thingspeak, waar deze data live kon worden uitgelezen.
+Om deze vraag te beantwoorden is een test set-up gemaakt met 3 verschillende MQ-sensoren, namelijk de MQ-4, -7 en -135. Deze werden correct gekalibreerd en getest. Om al deze data op te slaan is er gebruik gemaakt van een ESP8266-01s WiFi module. Deze module stuurde al de lezingen door naar een databank en naar het open-source platform Thingspeak, waar deze data live kon worden uitgelezen.
 
-Er werden 2 testen uitgevoerd in de kalibratiesetup van ILVO. Zo werd getest hoe gevoelig en accuraat de sensoren zijn bij blootstelling aan ammoniak en koolstofdioxide.
-%analyse
-%conclusie
+Er werden 2 testen uitgevoerd in de kalibratiesetup van ILVO. Zo werd getest hoe gevoelig en accuraat de sensoren zijn bij blootstelling aan ammoniak en koolstofdioxide. Ook werd de warmte-koelcyclus van de MQ-7 gassensor geïmplementeerd en getest met 3 verschillende gassen.
+
+Om de resultaten te analyseren werd gebruik gemaakt van PowerBI. Zo werd tot de conclusie gekomen dat deze sensoren beperkt zijn in stabiliteit en nauwkeurigheid. Het lezen van een specifieke gasconcentratie is niet nauwkeurig omdat de MQ-sensoren gevoelig zijn voor meerdere gassen. Maar desondanks deze onnauwkeurigheid kunnen MQ-sensoren toch een bruikbare en kosteneffectieve oplossing bieden voor het monitoren van de algemene luchtkwaliteit.
+
+Daarnaast heeft de implementatie van de warmte-koelcyclus in de MQ-7 sensor potentie getoond in het onderscheiden van verschillende gassen, door middel van de responscurve die elk gas vertoont.
+
+Verder onderzoek zou zich kunnen richten op het verbeteren van de stabiliteit en nauwkeurigheid van deze sensoren, en het verder ontwikkelen van de warmte-koelcyclus voor gassen te onderscheiden.
 
 
 

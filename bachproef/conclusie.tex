@@ -15,22 +15,32 @@
 %onderzoek?
 
 %centrale onderzoeksvraag: Hoe geschikt zijn goedkope sensoren om gassen in stalomgevingen te meten?
-%deelonderzoeksvragen:  - Hoe gaat een MQ-gassensor te werk?
-%                       - Hoe kunnen deze gassensoren de luchtsamenstelling meten?
-%                       - Zijn deze gassensoren geschikt om de luchtsamenstelling uit te lezen?
-%                       - Hoe werkt een warmte-koelcyclus in een sensor en heeft dit voordelen?
+%deelonderzoeksvragen:  - Zijn deze gassensoren geschikt om de luchtsamenstelling uit te lezen?
+%                       - Zijn deze gassensoren geschikt om stalgassen te meten?
+%                       - Welke voordelen heeft een warmte-koelcyclus in een sensor?
 
 
+In deze studie werd onderzocht hoe geschikt goedkope sensoren zijn om gassen in stalomgeving te meten. Dit heeft verschillende inzichten opgeleverd.
 
-In deze studie werd onderzocht hoe geschikt goedkope sensoren zijn om gassen in stalomgeving te meten. De geteste gassensoren zijn de goedkope MQ-sensoren, die kunnen worden bestuurd via een microcontroller zoals Arduino. Er werd onderzocht welke gassen er in een stalomgeving voorkomen en hoe een MQ-sensor exact werkt. Via de informatie uit de datasheets werd berekend hoe deze sensor de luchtsamenstelling kon meten. 
-Zo is er tot de conclusie gekomen dat deze MQ-sensoren niet geschikt zijn om de luchtsamenstelling uit te lezen. De MQ-sensoren zijn zeer instabiel en de luchtsamenstelling is een berekende schatting op basis van 1 waarde. 
-%TODO Na de R\textsubscript{0}-waarde te berekenen kunnen sommige gassen wel ongeveer correct worden ingeschat, zoals bijvoorbeeld CO\textsubscript{2}, Maar andere gassen worden totaal verkeerd ingeschat. 
-Wat deze gassensoren wel kunnen is detecteren of er een te grote hoeveelheid gas aanwezig is, dit kan ze bruikbaar maken als een goedkope monitor die via een alarmsignaal zou kunnen laten weten wanneer de omgeving een te slechte luchtkwaliteit heeft.
-Ook bevatten de datasheets niet heel veel informatie waardoor het kalibratieproces moeilijk kan verlopen. 
+Allereerst is er vastgesteld dat de MQ-sensoren niet optimaal zijn voor het nauwkeurig meten van de luchtsamenstelling. De MQ-sensoren zijn zeer instabiel en niet nauwkeurig. Ook is de beschikbare informatie in de datasheets beperkt, waardoor het kalibratieproces moeilijk kan verlopen.
+
+In sectie~\ref{sec:nauwkeurigheid} werden er 2 veelvoorkomende stalgassen getest.
+In subsectie~\ref{subsec:nh3} werden de 3 sensoren onderworpen aan NH\textsubscript{3}. Hier werd duidelijk dat de MQ-sensoren niet heel stabiel waren. Er werd vastgesteld dat de MQ-7 en -135 sensoren gevoelig zijn voor ammoniak, maar doordat ammoniak niet wordt vermeld in de datasheet kon de ppm niet worden berekend en vergeleken.
+In subsectie~\ref{subsec:co2} werd het tweede stalgas CO\textsubscript{2} getest. Hier werd duidelijk dat de MQ-135 sensor, na een correcte berekening van de R\textsubscript{0}-waarde, wel een ongeveer de juiste waarde ppm CO\textsubscript{2} kon inschatten, hoewel dit niet zeer stabiel was. Verder waren de MQ-4 en -7 sensoren ook gevoelig, maar in een mindere mate dan de MQ-135.
+
+De volledige luchtsamenstelling is slechts een berekende schatting op basis van 1 waarde, waardoor deze met een flinke korrel zout moet worden genomen.
+
+Desondanks de instabiliteit kunnen deze sensoren wel nog steeds detecteren of er gas aanwezig is. Aangezien dit een zeer goedkope gassensor is die een zeer snelle respons geeft kan deze dus wel bruikbaar zijn als goedkope monitor. Zo zou het via een alarmsignaal kunnen alarmeren wanneer er een te slechte luchtkwaliteit is.
 
 Hiernaast werd ook de toepassing van een warmte-koelcyclus uitgetest.
-%TODO stabieler dan andere?
-Het onderscheiden van verschillende gassen via de curve die door deze warmte-koelcyclus wordt gemaakt is iets wat zeker verder onderzocht kan worden. Aangezien elk gas zich op een andere manier gedraagt en TODO
+De toepassing om verschillende gassen te onderscheiden heeft potentieel voor verder onderzoek. Aangezien elk gas een unieke respons vertoont in de grafieken die ontstaan bij deze warmte-koelcyclus. Dit zou mogelijks kunnen worden verbeterd en verfijnd om op deze manier een onderscheid te kunnen maken tussen verschillende gassen.
+
+Het nadeel van deze warmte-koelcyclus is dat er slechts om de twee en een halve minuut een waarde kan worden uitgelezen. Ook zorgt deze warmte-koelcyclus voor een complexere opstelling en meer energieverbruik dan normaal.
+
+
+
+In conclusie, hoewel de MQ-sensoren beperkingen hebben wat betreft nauwkeurigheid en stabiliteit, bieden ze toch mogelijkheden om op een goedkope manier de luchtkwaliteit te monitoren en zo potentiële gevaren te identificeren. Verdere studies zouden zich kunnen richten op het verbeteren van de nauwkeurigheid van deze sensoren. Alsook het verkennen van nieuwe methoden voor het detecteren en analyseren van gassen via een warmte-koelcyclus.
+
 
 
 

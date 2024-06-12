@@ -27,9 +27,13 @@
 %% en geef het een gepaste titel.
 
 Zoals bij elke studie was de eerste fase een literatuurstudie om informatie te verwerven over het onderwerp. Zo begon dit onderzoek met een literatuurstudie in verband met stalgassen, verschillende soorten sensoren en de werking van de MQ-sensor. Met deze informatie werd aan de slag gegaan en werden de geschikte tools geselecteerd, zoals beschreven in sectie~\ref{sec:selectie}.
-Vervolgens werd een simpele set-up opgezet waarmee de drie sensoren konden worden uitgelezen. Om de PPM waarden te verkrijgen werd opnieuw een literatuurstudie gedaan om te onderzoeken hoe deze sensors moesten worden gekalibreerd~\ref{sec:hoe-luchtsamenstelling meten}.
+
+Vervolgens werd een simpele set-up opgezet waarmee de drie sensoren konden worden uitgelezen. Om de PPM waarden te verkrijgen werd opnieuw een literatuurstudie gedaan om te onderzoeken hoe deze sensors moesten worden gekalibreerd (\ref{sec:hoe-luchtsamenstelling meten}).
+
 In de volgende fase werd de ESP01 WiFi-module geanalyseerd en geconfigureerd. Parallel hieraan werd ThingSpeak opgezet en de databank gecreëerd zodat de ESP01 een plaats had om de verwerkte data naartoe te sturen.
+
 Een interessante wending in het onderzoek kwam toen mijn co-promotor Pieter-Jan voorstelde om de warmte-koelcyclus van de MQ-7 te bestuderen, dit leek me interessant en dus was de volgende fase om dit te onderzoeken en te implementeren in mijn set-up. Dit wordt besproken in sectie~\ref{sec:warmte-koelcyclus} van de literatuurstudie.
+
 In de daaropvolgende fase heb ik met informatie uit de vorige literatuurstudie de DHT22 sensor geïmplementeerd. Er is onderzocht geweest wat de invloed is van temperatuur en luchtvochtigheid op de metingen. Ook is er berekend hoe dit kan worden gecorrigeerd in sectie~\ref{sec:warmte-koelcyclus}.
 In de voorlaatste fase is de finale code geschreven en zijn de testen uitgevoerd. De data die hier is bekomen is in de laatste fase geanalyseerd via PowerBI.
 
@@ -50,7 +54,9 @@ Hardware:
 
 Software:
 \begin{itemize}
-    \item De software naar keuze voor de databank was MySQL, met Apache kon deze worden gehost op een lokale server waardoor deze bereikbaar was voor de ESP01. De verzamelde data kon hierna worden geanalyseerd met PowerBI.
+    \item De software naar keuze voor de databank was MySQL
+    \item Deze databank kon via Apache worden gehost op een lokale server, dit gebeurde via de software XAMPP. Zo was de databank bereikbaar was voor de ESP01.
+    \item De verzamelde data kon hierna worden geanalyseerd met PowerBI.
     \item ThingSpeak werd gebruikt als IoT-platform om de live data te visualiseren.
     \item Verder werd nog de Arduino IDE gebruikt voor de Arduino te programmeren en WebPlotDigitizer om de data uit grafieken te halen.
 \end{itemize}

@@ -138,8 +138,7 @@ float ppm_berekenen(float R0, float Rs, float waarden[4]) {
 \subsection{Downloaden van de firmware}
 \label{subsec:firmware}
 
-Figuur 
-~\ref{fig:esp_circuit} toont aan hoe de ESP01 moet worden aangesloten om de firmware te kunnen downloaden.
+Figuur \ref{fig:esp_circuit} toont aan hoe de ESP01 moet worden aangesloten om de firmware te kunnen downloaden.
 
 \begin{figure}[h]
     \includegraphics[scale=0.2, center]{esp_circuit.png}
@@ -147,7 +146,7 @@ Figuur
     \label{fig:esp_circuit}
 \end{figure}
 
-De juiste flasher software is te vinden in \href{https://drive.google.com/open?id=1tD7IpE4rPMOWyQHP6xzjdRKjJAyeEZPj}{deze} deze Google drive. De juiste firmware is \href{https://wiki.aprbrother.com/en/Firmware_For_ESP8266.html}{hier} te vinden, de correcte versie is v0.9.5.2.
+De juiste flasher software is te vinden in \href{https://drive.google.com/open?id=1tD7IpE4rPMOWyQHP6xzjdRKjJAyeEZPj}{deze} deze Google drive. De juiste firmware is op \href{https://wiki.aprbrother.com/en/Firmware_For_ESP8266.html}{deze} site te vinden, de correcte versie is v0.9.5.2.
 
 Vervolgens kan de juiste firmware worden geüpload door de juiste poort van de Arduino te selecteren en te beginnen met downloaden. Tijdens het downloaden is het belangrijk dat er geen Serial monitors open staan in de Arduino IDE.
 
@@ -156,12 +155,12 @@ Vervolgens kan de juiste firmware worden geüpload door de juiste poort van de A
 \subsection{Instellen van de ESP01}
 \label{subsec:instellen}
 
-Nadat de juiste firmware is geïnstalleerd op de ESP01 kan deze worden bereikt met de command-line-interface in de Arduino IDE. Vooraleer er AT-commando's kunnen worden verstuurd moet er een lege applicatie worden geüpload op de Arduino. Hierna kan de ESP bereikt worden, een kleine test is het commando AT, waarop OK moet worden geantwoord:
+Nadat de juiste firmware is geïnstalleerd op de ESP01 kan deze worden bereikt met de command-line-interface in de Arduino IDE. Vooraleer er AT-commando's kunnen worden verstuurd moet er een lege applicatie worden geüpload op de Arduino. Zo zal de Arduino ondertussen geen script uitvoeren. Hierna kan de ESP bereikt worden, een kleine test is het commando AT, waarop OK moet worden geantwoord:
 
 \begin{lstlisting}[language=Java,caption={Test of de ESP01 bereikbaar is}]
 AT
 
-OK
+    OK
 \end{lstlisting}
 
 Vervolgens moeten de volgende commando's worden verstuurd:

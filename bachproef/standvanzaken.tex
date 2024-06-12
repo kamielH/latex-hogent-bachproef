@@ -13,51 +13,40 @@
 %   functie heeft in de zin (bv. ``Uit onderzoek door Doll \& Hill (1954) bleek
 %   ...'')
 
-In deze stand van zaken zal worden besproken hoe welke gassen er voorkomen in een stalomgeving en welke concentraties schadelijk zijn voor dieren en mensen. Hierna zal er worden gekeken naar welke soorten gassensoren er bestaan en hoe deze te werk gaan. Vervolgens wordt er gefocust op de MQ-sensor, door middel van sectie~\ref{sec:welke-stalgassen} wordt nagegaan welke MQ-sensoren het meest geschikt zijn om de meest voorkomende stalgassen te meten. Vervolgens wordt besproken hoe er door middel van implementatie van een warmte-koelcyclus en een DHT22 sensor nauwkeurigere resultaten kunnen worden bekomen.
+In deze stand van zaken zal worden besproken welke gassen er voorkomen in een stalomgeving en welke concentraties schadelijk zijn voor dieren en mensen. Hierna zal er worden gekeken naar welke soorten gassensoren er bestaan en hoe deze te werk gaan. Vervolgens wordt er gefocust op de MQ-sensor, door middel van sectie~\ref{sec:welke-stalgassen} wordt nagegaan welke MQ-sensoren het meest geschikt zijn om de meest voorkomende stalgassen te meten. Vervolgens wordt besproken hoe er nauwkeurigere resultaten kunnen worden bekomen, door middel van een implementatie van een warmte-koelcyclus en een DHT22 sensor.
 
 
 \section{Welke gassen komen voor in stalomgevingen}%
 \label{sec:welke-stalgassen}
 
-Varkensmest bestaat voor het grootste deel uit afvalstoffen, bacteriën en eiwitten, stalgassen ontstaan doordat andere bacteriën deze eiwitten afbreken tot giftige gassen \autocite{Wolf2013}. Deze gassen worden dus voortdurend gemaakt maar kunnen in gevaarlijke hoeveelheden voorkomen als de mest in beweging komt of als er voer in de mestput gemorst wordt \autocite{Wolf2013} wanneer er niet genoeg ventilatie is
-%TODO \autocite{https://www.devarkenspraktijk.nl/het-gevaar-van-gassen-uit-de-mestput-2/}
-. Volgens \textcite{Klooster1993} zijn de meest voorkomende stalgassen in een varkensstal ammoniak (NH\textsubscript{3}) en koolstofdioxide (CO\textsubscript{2}), maar gassen zoals methaan (CH\textsubscript{4}), koolstofmonoxide (CO) en ammonium (NH\textsubscript{4}) behoren ook tot de vaste bewoners van de veestal. Ammoniak is een afbraakproduct van de eiwitten de mest \autocite{Wolf2013}. Al vanaf 20 ppm (Parts Per Million) in de lucht treden er schadelijke effecten bij varkens, daarom ligt de ArBO-norm (norm voor veilige arbeidsomstandigheden
-%TODO https://nl.wikipedia.org/wiki/Arbeidsomstandighedenwet
-) in Nederland op 10 ppm
-%TODO https://publicatiereeksgevaarlijkestoffen.nl/documents/81474/1664357555-pgs-12-2014-20pub.pdf (pagina 16)
-. Koolstofdioxide neemt 0,03\% in van de atmosfeer
-%TODO https://www.meteo.be/nl/info/weerwoorden/atmosfeer
-en wordt zelf geproduceerd door varkens en mensen. In schone buitenlucht is er ongeveer 400 ppm CO\textsubscript{2} in de atmosfeer, en vanaf 1200 ppm kunnen er al gezondheidsklachten voorkomen zoals concentratieverlies, vermoeidheid en sufheid.
-%TODO https://endchan.org/.media/30891e1a679b8fa8ff8f219502123f1b-applicationpdf.pdf
-De concentratie CO\textsubscript{2} kan zo hoog oplopen dat er verstikking optreedt. Dit gebeurt bij concentraties van 40 volumeprocent (= 400 000 ppm), dit is een zeer hoge concentratie maar kan in stallen voorkomen bij onvoldoende ventilatie, wanneer bijvoorbeeld de stroom zou uitvallen. de ArBo-norm ligt op 3500 tot 5000 ppm (0,35 tot 0,5 volumeprocent) maar in stalomgeving er wordt gestreefd naar concentraties tussen de 2000 en 3000 volumeprocent.
-Koolstofmonoxide (CO), koolstofdioxide zijn kleine broer, komt ook voor in stalomgevingen. Maar CO kan nog schadelijker zijn voor de gezondheid van mensen en dieren, doordat het zich kan binden aan hemoglobine in het bloed waardoor de transport van zuurstof wordt geblokkeerd \autocite{Wolf2013}. In een CO-rijke stal is het typisch dat biggen doodgeboren worden, daarom is het essentieel dat CO waarden worden beperkt. Zo is de maximale grenswaarde 20 ppm CO .
-%TODO https://www.kiwa.com/nl/nl/markten/energie-en-energiemanagement/technology/gastec-on-site/koolmonoxide/
+Varkensmest bestaat voor het grootste deel uit afvalstoffen, bacteriën en eiwitten. Stalgassen ontstaan doordat andere bacteriën deze eiwitten afbreken tot giftige gassen \autocite{Wolf2013}. Deze gassen worden dus voortdurend gemaakt maar kunnen in grote hoeveelheden voorkomen als de mest in beweging komt of als er voer in de mestput gemorst wordt \autocite{Wolf2013}. Wanneer er niet genoeg ventilatie is kan dit zeer gevaarlijk zijn \autocite{Heesbeen2021}. Volgens \textcite{Klooster1993} zijn de meest voorkomende stalgassen in een varkensstal ammoniak (NH\textsubscript{3}) en koolstofdioxide (CO\textsubscript{2}), maar gassen zoals methaan (CH\textsubscript{4}), koolstofmonoxide (CO) en ammonium (NH\textsubscript{4}) behoren ook tot de vaste bewoners van de veestal.
+
+Ammoniak is een afbraakproduct van de eiwitten aanwezig in de mest \autocite{Wolf2013}. Al vanaf 20 ppm (Parts Per Million) in de lucht treden er schadelijke effecten op bij varkens, daarom ligt de ArBO-norm (norm voor veilige arbeidsomstandigheden \autocite{arbo2021}) in Nederland op 10 ppm \autocite{PGS2014}.
+
+Koolstofdioxide neemt 0,03\% in van de atmosfeer \autocite{KMI2024} en wordt zelf geproduceerd door varkens en mensen. In schone buitenlucht is er ongeveer 400 ppm CO\textsubscript{2} in de atmosfeer, en vanaf 1200 ppm kunnen er al gezondheidsklachten voorkomen zoals concentratieverlies, vermoeidheid en sufheid \autocite{Jacobson2019}.
+
+De concentratie CO\textsubscript{2} kan zo hoog oplopen dat er verstikking optreedt. Dit gebeurt bij concentraties van 40 volumeprocent (= 400 000 ppm), dit is een zeer hoge concentratie maar die kan in stallen voorkomen bij onvoldoende ventilatie, wanneer bijvoorbeeld de stroom zou uitvallen. de ArBo-norm ligt op 3500 tot 5000 ppm (0,35 tot 0,5 volumeprocent) maar in stalomgeving er wordt gestreefd naar concentraties tussen de 2000 en 3000 ppm.
+
+Koolstofmonoxide (CO), koolstofdioxide zijn kleine broer, komt ook voor in stalomgevingen. Maar CO kan nog schadelijker zijn voor de gezondheid van mensen en dieren. Dit komt omdat het zich kan binden aan hemoglobine in het bloed waardoor de transport van zuurstof wordt geblokkeerd \autocite{Wolf2013}. In een CO-rijke stal is het typisch dat biggen doodgeboren worden, daarom is het essentieel dat CO waarden worden beperkt. Zo is de maximale grenswaarde 20 ppm CO \autocite{Kiwa2024}.
 
 
 
 
 \section{Welke soorten gassensoren bestaan er}%
 \label{sec:soorten-gassensoren}
-en hoe werken deze
 
 Er bestaan vele soorten gassensoren, de meest voorkomende zijn: katalytische verbrandingsgassensoren, elektrochemische gassensoren, infraroodgassensoren en halfgeleider gassensoren. Elk hebben hun voor- en nadelen waardoor de beste sensor kan verschillen per use-case. In de volgende secties worden ze besproken.
 
 \subsection{Katalytische verbrandingsgassensoren}
 \label{subsec:katalytische}
 
-Volgens 
-%TODO Citation: 'catalyst' in IUPAC Compendium of Chemical Terminology, 3rd ed. International Union of Pure and Applied Chemistry; 2006. Online version 3.0.1, 2019. https://doi.org/10.1351/goldbook.C00876
-is een katalysator een stof die de reactiesnelheid verhoogt zonder de algemene standaard Gibbs-energieverandering in de reactie te wijzigen, zo verlaagt een katalysator de ontstekingstemperatuur van een brandbaar gas. Katalytische verbrandingsgassensoren bevatten een kraal gemaakt van een op platina gebaseerde katalysator, zoals te zien in figuur~\ref{fig:catalytic}. Wanneer een brandbaar gas in contact komt met de katalysator, reageert het en produceert het warmte. Door deze verandering in temperatuur kan de sensor door middel van een Wheatstone bridge een verandering in weerstand waarnemen en zo de aanwezigheid van brandbaar gas detecteren
-%TODO https://web.archive.org/web/20141110023516/http://intlsensor.com/pdf/catalyticbead.pdf
-. Volgens de vergelijkende studie van alle soorten gassensoren van
-%TODO https://www.sensorsportal.com/HTML/DIGEST/april_2014/Vol_168/P_1957.pdf
-is dit een goedkope en simpele manier om gassen te meten, alleen heeft deze sensor genoeg zuurstof nodig om te werken. Ook kan er katalysatorvergiftiging optreden als de sensor in contact komt met lood, chloor of siliconen. Hierna verliest de sensor zijn gevoeligheid in is hij volledig onbruikbaar
+Volgens \textcite{IUPAC2019} is een katalysator een stof die de reactiesnelheid verhoogt zonder de algemene standaard Gibbs-energieverandering in de reactie te wijzigen. Zo verlaagt een katalysator de ontstekingstemperatuur van een brandbaar gas.
+
+Katalytische verbrandingsgassensoren bevatten een kraal gemaakt van een op platina gebaseerde katalysator, zoals te zien in figuur~\ref{fig:catalytic}. Wanneer een brandbaar gas in contact komt met deze katalysator, reageert het en produceert het warmte. Door deze verandering in temperatuur kan de sensor door middel van een Wheatstone bridge een verandering in weerstand waarnemen, en zo de aanwezigheid van brandbaar gas detecteren \autocite{CCGS2005}. Volgens de vergelijkende studie van \textcite{review2014} is dit een goedkope en simpele manier om gassen te meten, alleen heeft deze sensor genoeg zuurstof nodig om te werken. Ook kan er katalysatorvergiftiging optreden, dit gebeurt wanneer de sensor in contact komt met lood, chloor of siliconen. Deze stoffen 'vergiftigen' de sensor waardoor hij zijn gevoeligheid verliest en hij volledig onbruikbaar wordt.
 
 \begin{figure}[h]
     \includegraphics[scale=0.4, center]{catalytic.png}
-    \caption[Structuur katalytische gassensor]{Interne structuur van een katalytische verbrandingsgassensor
-    %TODO referentie https://www.gastec.co.jp/en/product/detail/id=2205
-    }
+    \caption[Structuur katalytische gassensor]{Interne structuur van een katalytische verbrandingsgassensor \autocite{gastec2016}}
     \label{fig:catalytic}
 \end{figure}
 
@@ -65,35 +54,32 @@ is dit een goedkope en simpele manier om gassen te meten, alleen heeft deze sens
 \subsection{Elektrochemische gassensoren}
 \label{subsec:elektrochemische}
 
-Elektrochemische gassensoren gebruiken oxidatiereductiereacties om de gasconcentratie te meten. Bij aanraking met een specifiek gas ondergaan de gasmoleculen een oxidatieve reactie, waarbij ionen en elektronen vrijkomen en zo ontstaat er vervolgens reductie. De hoeveelheid gas wordt bepaald via de Coulomb-analyse
-%TODO https://nl.gvda-instrument.com/info/subtract-the-types-of-gas-sensors-used-in-the-87182523.html
-, via deze analyse wordt er gekeken naar de hoeveelheid elektriciteit die wordt verbruikt tijdens het elektrolyseproces om zo, op basis van de wet van Faraday, de hoeveelheid van een gemeten stof te bepalen. Deze soort gassensor kan een grote waaier aan gassen detecteren en heeft een hoge gevoeligheid
-%TODO https://www.sensorsportal.com/HTML/DIGEST/april_2014/Vol_168/P_1957.pdf
-. Maar deze sensoren hebben een korte levensduur en hebben dus regelmatig nood aan onderhoud, waardoor ze niet geschikt zouden zijn als duurzame gassensor voor in een veestal.
+Elektrochemische gassensoren gebruiken oxidatiereductiereacties om de gasconcentratie te meten. Wanneer een specifiek gas met het membraan (zie figuur~\ref{fig:elektrochemical}) in aanraking komt wordt het verdeeld in de elektrolyt. Deze elektrolyt kan van vast of vloeibaar materiaal zijn gemaakt. Wanneer de moleculen vervolgens in aanraking komen met de elektrode ondergaan deze een oxidatieve reactie. In deze reactie komen ionen en elektronen vrij. Zo kan er via een stroommetingssysteem worden bepaald hoeveel stroom er tussen de twee elektroden loopt (sensing- en counter elektrode in figuur~\ref{fig:elektrochemical}) \autocite{Stetter2008}.
+
+Zo wordt de hoeveelheid gas vervolgens bepaald via de Coulomb-analyse. In deze analyse wordt de hoeveelheid gas bepaald op basis van de wet van Faraday \autocite{gvda2023}.
+
+Deze soort gassensor kan een grote waaier aan gassen detecteren en heeft een hoge gevoeligheid \autocite{review2014}. Maar deze sensoren hebben een korte levensduur en hebben dus regelmatig nood aan onderhoud, waardoor ze niet geschikt zouden zijn als duurzame gassensor voor in een veestal.
 
 \begin{figure}[h]
     \includegraphics[scale=0.4, center]{elektrochemical.png}
-    \caption[Structuur elektrochemisch gassensor]{Interne structuur van een elektrochemische gassensor
-        %TODO referentie https://www.researchgate.net/publication/329533281_Effects_of_interfering_gases_in_electrochemical_sensors_NH_3_and_NO_2
-    }
+    \caption[Structuur elektrochemisch gassensor]{Interne structuur van een elektrochemische gassensor \autocite{MajderLopatka2018}}
     \label{fig:elektrochemical}
 \end{figure}
 
 
 
-\subsection{Infraroodgassensoren}
+\subsection{Infrarood gassensoren}
 \label{subsec:infrarood}
 
-Een infraroodgassensor maakt gebruik van het feit dat gasmoleculen infrarode lichtstralen op specifieke golflengten kunnen absorberen. Zo kan CO\textsubscript{2} bijvoorbeeld infraroodstraling van 4,3 µm absorberen. Wanneer de infraroodstralen de infraroodsensor verzwakt bereiken kan de gasconcentratie worden berekend op basis van het verschil in de bereikte hoeveelheden infraroodstraling. Hoe meer gas er is, hoe minder infraroodstralen de sensor bereiken en omgekeerd
-%TODO https://www.akm.com/eu/en/products/co2-sensor/tutorial/types-mechanism/
-. Wat betreft nauwkeurigheid en gevoeligheid is de infraroodgassensoren suprieur aan de andere soorten, en ook heeft deze soort sensor een langere levensuur dan de rest. Maar een infraroodsensor behoort wel tot de duurdere gassensoren. Ook kampt het met het probleem dat niet alle gassen infrarood licht kunnen absorberen, zoals bijvoorbeeld CO\textsubscript{2}, deze gassen kunnen dus ook niet worden gemeten.
-%TODO https://www.sensorsportal.com/HTML/DIGEST/april_2014/Vol_168/P_1957.pdf
+Een andere veelgebruikt gassensor is de infrarood gassensor (zie figuur~\ref{fig:infrarood}). Deze bestaat uit een lichtbron, een meetkamer en een detector. In deze lichtbron is ook een filter aanwezig. Deze filter is in staat om specifieke golflengtes van infrarood licht te selecteren.
+
+Zo maakt de infrarood gassensor gebruik van het feit dat gasmoleculen in staat zijn om infrarode lichtstralen absorberen. Zo heeft ieder soort gas een eigen specifieke golflengte die wordt geabsorbeerd \autocite{li2010infrared}.
+
+Wanneer de verzonden infraroodstralen de infraroodsensor verzwakt bereiken kan de gasconcentratie worden berekend. Dit gebeurt op basis van het verschil in de bereikte hoeveelheden infraroodstraling. Hoe meer gas er is, hoe minder infraroodstralen de sensor bereiken en omgekeerd \autocite{Senseair2018}. Wat betreft nauwkeurigheid en gevoeligheid is de infrarood gassensor superieur aan de andere soorten, en ook heeft deze soort sensor een langere levensuur dan de rest. Maar een infraroodsensor is wel een stuk duurder dan andere gassensoren. Ook kampt het met het probleem dat niet alle gassen infrarood licht kunnen absorberen, zoals bijvoorbeeld stikstof (N\textsubscript{2}) of waterstof (H\textsubscript{2}) \autocite{review2014}. Deze gassen kunnen dus niet worden gemeten.
 
 \begin{figure}[h]
     \includegraphics[scale=0.15, center]{infrarood.jpeg}
-    \caption[Structuur infraroodgassensor]{Interne structuur van een infaroodgassensor
-        %TODO referentie https://www.akm.com/eu/en/products/co2-sensor/tutorial/types-mechanism/ (weeral)
-    }
+    \caption[Structuur infrarood gassensor]{Interne structuur van een infrarood gassensor \autocite{Senseair2018}}
     \label{fig:infrarood}
 \end{figure}
 
@@ -101,24 +87,16 @@ Een infraroodgassensor maakt gebruik van het feit dat gasmoleculen infrarode lic
 \subsection{Halfgeleider gassensoren}
 \label{subsec:MOS}
 
-Volgens
-%TODO https://nl.wikipedia.org/wiki/Halfgeleider_(vastestoffysica)
-is een halfgeleider een stof die op vlak van elektrische geleiding het midden houdt tussen goede geleiders en goede isolators, de halfgeleider die het meest terug komt in dit type gassensoren is tindioxide (SnO\textsubscript{2}) samen met een laag siliconen.
-%TODO https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7700484/
-. Wanneer het halfgeleidermateriaal in contact komt met een gasmolecuul waarvoor het gevoelig is, treden er chemische reacties op aan het oppervlak van het materiaal. Deze reacties leiden tot veranderingen in de elektrische weerstand van het halfgeleidermateriaal. Het meetcircuit van de sensor detecteert deze verandering en zet deze om in een meetbare elektrische signaaluitgang
-%TODO https://www.sensorsportal.com/HTML/DIGEST/april_2014/Vol_168/P_1957.pdf
-. Deze soort gassensoren hebben een hoge gevoeligheid, zijn goedkoop en kunnen en breed scala aan gassen detecteren. Het grootste nadeel van halfgeleider gassensoren is dat ze ook gevoelig zijn voor omgevingsfactoren zoals temperatuur en luchtvochtigheid, die de resultaten sterk kunnen beïnvloeden. Ook leiden ze aan kruisgevoeligheid, wat betekent dat ze kunnen ook reageren op andere gassen dan het doelgas, wat kan leiden tot vals-positieve resultaten.
+Volgens \textcite{wiki2022} is een halfgeleider een stof die op vlak van elektrische geleiding het midden houdt tussen goede geleiders en goede isolators. De halfgeleider die het meest wordt gebruikt bij gassensoren is tindioxide (SnO\textsubscript{2}) samen met een laag siliconen \autocite{Nikolic2020}. Wanneer het halfgeleidermateriaal in contact komt met een gasmolecule waarvoor het gevoelig is, treden er chemische reacties op aan het oppervlak van het materiaal. Deze reacties leiden tot veranderingen in de elektrische weerstand van het halfgeleidermateriaal. Het meetcircuit van de sensor detecteert deze verandering en zet deze om in een meetbare elektrische signaaluitgang \autocite{review2014}. Deze soort gassensoren hebben een hoge gevoeligheid, zijn goedkoop en kunnen en breed scala aan gassen detecteren. Het grootste nadeel van halfgeleider gassensoren is dat ze ook gevoelig zijn voor omgevingsfactoren zoals temperatuur en luchtvochtigheid, die de resultaten sterk kunnen beïnvloeden. Ook leiden ze aan kruisgevoeligheid, wat betekent dat ze kunnen ook reageren op andere gassen dan het doelgas, wat kan leiden tot vals-positieve resultaten.
 
 
 \begin{figure}[h]
     \includegraphics[scale=0.2, center]{halfgeleider.png}
-    \caption[Structuur halfgeleider gassensor]{Interne structuur van een halfgeleider gassensor
-        %TODO referentie https://www.sensorsportal.com/HTML/DIGEST/april_2014/Vol_168/P_1957.pdf (weeral)
-    }
+    \caption[Structuur halfgeleider gassensor]{Interne structuur van een halfgeleider gassensor \autocite{review2014}}
     \label{fig:halfgeleider}
 \end{figure}
 
-
+\pagebreak
 
 \section{Gebruikte hardware in de test set-up}
 \label{sec:hardware}
@@ -127,66 +105,57 @@ is een halfgeleider een stof die op vlak van elektrische geleiding het midden ho
 \subsection{De MQ-gassensoren}%
 \label{subsec:werking-MQ}
 
-%TODO BRONNEN BRONNEN BRONNEN
-
 De MQ-gassensor is dus een gassensor van het type halfgeleider, ze kost twee tot vijf euro en kan gemakkelijk worden gebruikt via een microcontroller zoals Arduino. Het is belangrijk op te merken dat de MQ-gassensor meerdere gassen kan detecteren, maar deze niet afzonderlijk kan identificeren. De sensor geeft dus een enkele waarde terug.
-De MQ-sensor heeft een voeding van 5V nodig
-%TODO https://arduinokitproject.com/mq2-gas-senser-arduino-tutorial/
-, en omdat het via verwarming te werk gaat is de sensor beschermt met 2 lagen fijn roestvrij stalen gaas. Dit beschermende gaas zorgt ervoor dat het verwarmingselement in de sensor geen explosies veroorzaakt wanneer het in aanraking komt met een brandbaar gas.
+De MQ-sensor heeft een voeding van 5V nodig \autocite{akp2023}, en omdat deze sensor via verwarming te werk gaat is deze beschermt met 2 lagen fijn roestvrij stalen gaas. Dit beschermende gaas zorgt ervoor dat het verwarmingselement in de sensor geen explosies veroorzaakt wanneer het in aanraking komt met een brandbaar gas.
+
 
 \begin{figure}[h]
-    \includegraphics[scale=0.1, center]{mq.png}
-    \caption[MQ-gassensor]{MQ-gassensor}
+    \includegraphics[scale=0.12, center]{mq.png}
+    \caption[MQ-gassensor]{MQ-gassensor (links) en zijn interne structuur (rechts)}
     \label{fig:mq}
 \end{figure}
 
+
 De interne structuur van de sensor bestaat uit zes pinnen die verbonden zijn met een centraal sensorelement. De twee middelste pinnen zijn verantwoordelijk voor het verwarmen van het sensorelement, en de vier andere pinnen detecteren kleine variaties in de stroom die door het element gaat. Dit sensorelement bestaat uit keramiek op aluminiumoxidebasis (Al\textsubscript{2}O\textsubscript{3}), gecoat met een laag tindioxide (SnO\textsubscript{2}).
 
-\begin{figure}[h]
-    \includegraphics[scale=0.1, center]{mq_intern.png}
-    \caption[Structuur MQ-gassensor]{Interne structuur van een MQ-gassensor}
-    \label{fig:mq_intern}
-\end{figure}
 
 \begin{figure}[h]
-    \includegraphics[scale=0.4, center]{mq_configuratie.png}
-    \caption[Schema MQ-gassensor]{Schema van de structuur van een MQ-gassensor
-    %TODO bron mq4 datasheet
-    }
+    \includegraphics[scale=0.3, center]{mq_configuratie.png}
+    \caption[Schema MQ-gassensor]{Schema van de structuur van een MQ-gassensor \autocite{mq4}}
     \label{fig:mq_configuratie}
 \end{figure}
 
-Wanneer deze laag SnO\textsubscript{2} wordt verwarmd blijven zuurstofmoleculen aan het oppervlak vast hangen door adsorptie. Hierdoor wordt een depletielaag gevormd, dit is een laag waar geen transport mogelijk is en dus een elektrisch isolerende laag wordt gevormd
-%TODO https://en.wikipedia.org/wiki/Depletion_region
-. Gevolglijk heeft de SnO\textsubscript{2} een hoge weerstand, waardoor de elektrische stroom wordt geblokkeerd. Wanneer de omgeving echter andere gassen bevat kunnen deze de zuurstoflaag reduceren door middel van reductie. Als resultaat neemt de depletielaag af in dichtheid en komen er elektronen vrij in het SnO\textsubscript{2}-materiaal. Zo verminderd de weerstand en verhoogt de elektrische stroom.
-Een belangrijk detail bij het gebruiken van de MQ-sensor is de voorverwarming. Doordat de sensor een lange tijd in opslag heeft gelegen verliest hij zijn nauwkeurigheid, daarom is het noodzakelijk om hem 24-48 te laten voorverwarmen. Hierna heeft de sensor bij iedere sessie slechts 5-10 minuten nodig om zich te stabiliseren.
-%TODO pdf doc: handig, burn_in_time_mq-sensorDesign_and_Calibration_of_a_Microcontroller_Based_
+Wanneer deze laag SnO\textsubscript{2} wordt verwarmd blijven zuurstofmoleculen aan het oppervlak vast hangen door adsorptie. Hierdoor wordt een depletielaag gevormd, dit is een laag waar geen transport mogelijk is en dus een elektrisch isolerende laag wordt gevormd \autocite{dr2016}. Gevolglijk heeft de SnO\textsubscript{2} een hoge weerstand, waardoor de elektrische stroom wordt geblokkeerd.
 
-Er zijn veel verschillende soorten MQ-sensoren die elk gespecialiseerd zijn in verschillende gassen, volgens het onderzoek van
-%TODO https://pdf.sciencedirectassets.com/271353/1-s2.0-S0925400500X01323/1-s2.0-S0925400501009157/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEHUaCXVzLWVhc3QtMSJIMEYCIQDMWRuQquqOzRZ%2FdLGApwvgrvN8pY1xybqxuFSjkXqxAgIhAPdwExX%2FajVuX2lYKPMTLxor4LOTGxaYTvPQ5ie5ff5yKrwFCL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQBRoMMDU5MDAzNTQ2ODY1IgyjStYWt0e0GA8%2BhFAqkAWZMTk%2F20dCsEqh8HIJQklShUct1sGMjVlI8rwG%2F2txUBpsSClvfG0AKdP%2FT0ioScbcVTsH%2BZls9GvgKAPAy7It03qvKyujS6o9ytHHF1Wq%2BdNO%2BpbmXzBk90NLVo7g%2BxdgF5UGSkha6D4Svvx0huPLBlW5mZ0BssNrR6Ad6zU2C807aTBOfc4u9Nir8SK%2F1dd%2BmrwNcl7c5MLDa27JuZ0mlcRUvRiuUVkJ6dlczRCZmiMXbt1sWcRbSjaXXUV96kVXvZ53TTkLc5XS1nxIwdPF9ELSZb89ovGWzuR%2FDg0YyxuJc%2FPb0qM81fz43iA3As%2F4EnK9MgspXiwR8picjyKwnqsFMr63fARzAjC0dz9GJtSWTeHMI%2BwBK7Zwg4nQ%2BXosKOKc0TCH7VXyAn4jc5X1Bw1LhiGsjoo0zxBpZFaPaYAW3joCNp4uMd%2FotfPedft1ArgH%2FI%2FEL8IH0vN8itMOWNG7DTj0OzZ7klCRmIQwLrOo6FPcqWbSCQee%2FuIgB2q%2BRvh3c3zqwbsKqunh%2FxSsGwrYN%2FQnW0Bj8WaudeIVjQ13GQjZ%2FcrGlZTD2cOdJncJYdaHVThfAttnniz007IBjP%2FXWLDlRkkI6z2P2Q7j6sEPSwm0sfDXJEwvhkFbe%2B7JS0qjzzIOt8tFzt5yR43%2BBZR6ILjookP%2F%2Fp2Yg1oMSYA5%2BSe7Bm8UvF0Bw3bSNWUTY6KzIgKt%2BVcLLhBPvVFqLVOVBKknJMXK76JZaAmO9Ofbtj8UewZ%2FmKQUtRSjGgmQITrB%2FKmVqUFQLsbndY%2FAh4aoSmbWBWA9%2FXu2673Bq3lMOVodqbHW5iW%2FuY8SqL0Izo1uaXcQMymBwwTilnRYelNbx1gt2XjiO%2B8jkPs1wzChta6xBjqwAb0KQk4TL6rTskqYkeOs7g1iAK0Gk5eabGlLndjEEkJIW78prDshh7wovRTjVKxxDuYwJAa1wuVBy6L83zkaI%2B1ljlpH7KrHzEdjoJU611IJDgsJ8jTdTdKoadEOb9u9JiVbKUM5v1hbD1GJQWpoLrtpaUUzFrAWcMV7td7tg6DjBxHwPsZWFmyvJGMLbWyMUno9ashpgDkEcb%2BYLScL4Dvt7IlwM%2FmTi4K48zlldfe5&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240426T132607Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYUK7ATK6D%2F20240426%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=0cb7e3af9220c645d09d2a1f74b3455821bb175d9ffa5ead7bba423394b455e5&hash=002a4bdfad7a387e694c9336c6dae4f85732d4253d82c8cb3ea924a61c9176b4&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S0925400501009157&tid=spdf-05f8d0d2-4606-4d0e-9702-c8ef374359a6&sid=82d4a1b570fc554725486624c131b8a2d180gxrqb&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=18045e5101560b585154&rr=87a6e7145c1683d7&cc=be
-kan de gevoeligheid voor methaan (CH\textsubscript{4}) vergroot door platina toe te voegen aan de SnO\textsubscript{2}. Ook kan door een toevoeging van K\textsubscript{2}O de gevoeligheid voor koolstofmonoxide (CO) worden vergroot, en en op dezelfde manier kan Na\textsubscript{2}O ervoor zorgen dat de sensor minder gevoelig wordt voor CO\textsubscript{2}. Zo heeft iedere MQ-sensor kleine aanpassingen in het sensor element wat ze gevoelig maakt voor specifieke gassen.
-De MQ-sensoren die gekozen zijn voor dit onderzoek zijn de MQ-4, MQ-7 en MQ-135. De MQ-4 sensor is gevoelig voor methaan (CH\textsubscript{4}) en LPG (Liquified Petroleum Gas). De MQ-7 biedt een specialisatie in koolstofmonoxide (CO) en waterstof (H\textsubscript{2}). Tenslotte is de MQ-135 een sensor die wordt gebruikt om de algemene luchtkwaliteit te meten, dit gebeurt vooral aan de hand van de gassen CO\textsubscript{2}, NH\textsubscript{4} en CO.
-%TODO https://robocraze.com/blogs/post/mq-series-gas-sensor (al een bron denkik)
+Wanneer de omgeving echter andere gassen bevat kunnen deze de zuurstoflaag reduceren door middel van reductie. Als resultaat neemt de depletielaag af in dichtheid en komen er elektronen vrij in het SnO\textsubscript{2}-materiaal. Zo verminderd de weerstand en verhoogt de elektrische stroom.
 
-In dit onderzoek is er voor de MQ-4 en en MQ-135 sensor gewerkt met een module, dit betekent dat de sensor al op een vooraf gemaakte printplaat is bevestigd. Deze modules hebben geen zes maar vier pinnen: spanning, grond, digitale- en analoge uitgang. Het voordeel van deze modules is dat deze gemakkelijker te gebruiken zijn dan de naakte sensoren, maar het nadeel is dat de belastingsweerstand op deze modules gelijk is aan 1k$\Omega$. In de datasheets van deze sensoren (
-%TODO datasheet mq135
-%TODO datasheet mq4
-) staat dat er voor optimale resultaten de aanbevolen belastingsweerstand 20k$\Omega$ is. 1 k$\Omega$ valt hier dus ver onder dus het is belangrijk hier rekening mee te houden als de ppm wordt berekend in de berekeningen (~\ref{sec:hoe-luchtsamenstelling meten}).
+Een belangrijk detail bij het gebruiken van de MQ-sensor is de voorverwarming. Doordat de sensor een lange tijd in opslag heeft gelegen verliest hij zijn nauwkeurigheid, daarom is het noodzakelijk om hem 24-48 uur te laten voorverwarmen. Hierna heeft de sensor bij iedere sessie slechts 5-10 minuten nodig om zich te stabiliseren \autocite{Sakayo2019}.
+
+Er zijn veel verschillende soorten MQ-sensoren die elk gespecialiseerd zijn in verschillende gassen, volgens het onderzoek van \textcite{Khodadadi2001} kan de gevoeligheid voor methaan (CH\textsubscript{4}) vergroot worden door platina toe te voegen aan de SnO\textsubscript{2}. Ook kan door een toevoeging van K\textsubscript{2}O de gevoeligheid voor koolstofmonoxide (CO) worden vergroot. En op dezelfde manier kan Na\textsubscript{2}O ervoor zorgen dat de sensor minder gevoelig wordt voor CO\textsubscript{2}. Zo heeft iedere MQ-sensor kleine aanpassingen in het sensor element wat ze gevoelig maakt voor specifieke gassen.
+
+De MQ-sensoren die gekozen zijn voor dit onderzoek zijn de MQ-4, MQ-7 en MQ-135. De MQ-4 sensor is gevoelig voor methaan (CH\textsubscript{4}) en LPG (Liquified Petroleum Gas). De MQ-7 biedt een specialisatie in koolstofmonoxide (CO) en waterstof (H\textsubscript{2}). Tenslotte is de MQ-135 een sensor die wordt gebruikt om de algemene luchtkwaliteit te meten, dit gebeurt vooral aan de hand van de gassen CO\textsubscript{2}, NH\textsubscript{4} en CO \autocite{RC2022}.
+
+In dit onderzoek is er voor de MQ-4 en en MQ-135 sensor gewerkt met een module, dit betekent dat de sensor al op een vooraf gemaakte printplaat is bevestigd. Deze modules hebben geen zes maar vier pinnen: spanning, grond, digitale- en analoge uitgang. Het voordeel van deze modules is dat deze gemakkelijker te gebruiken zijn dan de naakte sensoren, maar het nadeel is dat de belastingsweerstand op deze modules gelijk is aan 1k$\Omega$. In de datasheets van deze sensoren (\autocite{mq135}, \autocite{mq4}) staat dat er voor optimale resultaten de aanbevolen belastingsweerstand 20k$\Omega$ is. 1 k$\Omega$ valt hier dus ver onder dus het is belangrijk hier rekening mee te houden als de ppm wordt berekend in de berekeningen (\ref{sec:hoe-luchtsamenstelling meten}).
 
 
 \subsection{DHT22}%
 \label{subsec:dht22}
 
 Naast de MQ-sensoren zal ook een DHT22 sensor worden geïntegreerd in de test set-up. De DHT22 sensor meet temperatuur en luchtvochtigheid. Deze waarden kunnen van pas komen bij het optimaliseren van de resultaten van de MQ-sensoren, aangezien deze sensoren gevoelig zijn voor omgevingsfactoren zoals temperatuur en luchtvochtigheid.
-De waarde die de DHT22 sensor terug geeft kan worden omgezet in temperatuur en luchtvochtigheid door de binaire waarde op te splitsen.
-%TODO https://chem.libretexts.org/Courses/University_of_Arkansas_Little_Rock/IOST_Library/09%3A_Sensor_Book/1%3A_Temperature_Sensors/01%3A_DHT22_Temperature_Sensor
-Zo is bijvoorbeeld 00110010 (= 50) 00000101 (= 5) 00011001 (= 25) 00000101 (= 5), gelijk aan een luchtvochtigheid van 50,5\% en een temperatuur van 25,5°C.
+
+In sectie~\ref{sec:temp-en-hum} zal worden berekend hoe de waarde van de MQ-sensor kan worden gecorrigeerd aan de hand van de temperatuur, de luchtvochtigheid en de info van de datasheet.
+
+\begin{figure}[h]
+    \includegraphics[scale=0.1, center]{dht22.jpg}
+    \caption[DHT22 sensor]{De DHT22 sensor}
+    \label{fig:dht22}
+\end{figure}
+
 
 \subsection{Arduino Mega 2560 Microcontroller}%
 \label{subsec:arduino}
 
-Voor dit onderzoek werd de Arduino Mega 2560 gekozen als microcontroller. De Arduino Mega 2560 is iets groter en krachtiger in vergelijking met de basis Arduino Uno voor een iets duurdere prijs. De Arduino Mega biedt een flashgeheugen van 256 KB, 54 I/O pins, 16 analoge input pins, een EEPROM (Electrically erasable programmable read-only memory) van 4kB en een SRAM (Static random-access memory) van 8 kB.
-%TODO https://www.researchgate.net/publication/326546408_Design_and_Development_of_a_5-Channel_Arduino-Based_Data_Acquisition_System_ABDAS_for_Experimental_Aerodynamics_Research
+Voor dit onderzoek werd de Arduino Mega 2560 gekozen als microcontroller. De Arduino Mega 2560 is iets groter en krachtiger in vergelijking met de basis Arduino Uno voor een iets duurdere prijs. De Arduino Mega biedt een flashgeheugen van 256 KB, 54 I/O pins, 16 analoge input pins, een EEPROM (Electrically erasable programmable read-only memory) van 4kB en een SRAM (Static random-access memory) van 8 kB \autocite{Arduino}.
 
 \begin{figure}[h]
     \includegraphics[scale=0.1, center]{arduino.jpg}
@@ -200,11 +169,8 @@ Via de Arduino IDE kan de microcontroller gemakkelijk worden geprogrammeerd om d
 \subsection{ESP8266-01s WiFi Module}%
 \label{subsec:esp01}
 
-De ESP8266-01s, of in het kort de ESP01, is een kleine en goedkope module die data kan versturen over een WiFi-netwerk, mits ze is aangesloten op dat netwerk. De ESP01 werkt via AT commando's, ook wel gekend als de Hayes Command Set 
-%TODO https://history-computer.com/technology/modem-complete-history-of-the-modem/
-. Deze commando's worden vooral gebruikt om een ​​modem te configureren en de netwerkverbinding tot stand te brengen, maar ze zijn ook in staat data te versturen via een TCP of UDP verbinding. Zo kunnen de waarden die terug worden gegeven door de sensoren worden verzonden naar een databank en het Thingspeak platform.
-Het AT-commando bestaat algemeen uit drie delen: de prefix, body en terminator. De prefix bestaat steeds uit ``AT''. De body bestaat uit de werkelijke opdracht, samen met parameters en andere gegevens. Ten slotte is er de terminator, deze is doorgaans een newline (\textbackslash r\textbackslash n).
-%TODO https://docs.rs-online.com/5931/0900766b80bec52c.pdf
+De ESP8266-01s, of in het kort de ESP01, is een kleine en goedkope module die data kan versturen over een WiFi-netwerk, mits ze is aangesloten op dat netwerk. De ESP01 werkt via AT commando's, ook wel gekend als de Hayes Command Set \autocite{Bales2023}. Deze commando's worden vooral gebruikt om een ​​modem te configureren en de netwerkverbinding tot stand te brengen, maar ze zijn ook in staat data te versturen via een TCP of UDP verbinding. Zo kunnen de waarden die terug worden gegeven door de sensoren worden verzonden naar een databank en het Thingspeak platform.
+Het AT-commando bestaat algemeen uit drie delen: de prefix, body en terminator. De prefix bestaat steeds uit ``AT''. De body bestaat uit de werkelijke opdracht, samen met parameters en andere gegevens. Ten slotte is er de terminator, deze is doorgaans een newline (\textbackslash r\textbackslash n) \autocite{Teltonika}.
 
 \begin{figure}[h]
     \includegraphics[scale=0.18, center]{esp.png}
@@ -217,18 +183,15 @@ Het AT-commando bestaat algemeen uit drie delen: de prefix, body en terminator. 
 \section{Hoe kan de luchtsamenstelling worden gemeten door MQ-sensoren?}%
 \label{sec:hoe-luchtsamenstelling meten}
 
-Een MQ-sensor geeft dus maar 1 analoge waarde terug, maar op basis van deze waarde kan een berekende schatting worden gemaakt naar de luchtsamenstelling. In de officiële datasheets van de MQ-4, -7 en -135 staan gevoeligheidscurves voor de soorten gas waar die sensor het meest gevoelig voor is
-%TODO alle 3 de datasheets als bron
-. Zo zie je in figuur~\ref{fig:MQ135_grafiek} een voorbeeld van de gevoeligheidscurve van de MQ-135 sensor.
+Een MQ-sensor geeft dus maar 1 analoge waarde terug, maar op basis van deze waarde kan een berekende schatting worden gemaakt naar de luchtsamenstelling. In de officiële datasheets van de MQ-4, -7 en -135 staan gevoeligheidscurves voor de soorten gas waar die sensor het meest gevoelig voor is (\autocite{mq4}, \autocite{mq7}, \autocite{mq135}). Zo zie je in figuur~\ref{fig:MQ135_grafiek} een voorbeeld van de gevoeligheidscurve van de MQ-135 sensor.
 
 \begin{figure}[h]
     \includegraphics[scale=0.5, center]{MQ135_grafiek.png}
-    \caption[Gevoeligheidscurve MQ-135]{Gevoeligheidscurve van de MQ-135 sensor
-    %TODO bron datasheet mq135
-    }
+    \caption[Gevoeligheidscurve MQ-135]{Gevoeligheidscurve van de MQ-135 sensor \autocite{mq135}}
     \label{fig:MQ135_grafiek}
 \end{figure}
 
+\pagebreak
 
 Via deze curves kan per type gas de PPM worden berekend, maar daarvoor moet Rs/R\textsubscript{0} zijn gekend. De volgende berekeningen tonen hoe Rs en R0 kunnen worden berekend, waarmee vervolgens een analoge waarde kan worden omgezet naar PPM.
 
@@ -261,9 +224,7 @@ Met VRL = voltage reference low \textbf{(= Vout)}
 \begin{equation}
     Rs = \frac{Vcc * Rl}{VRL} - Rl
 \end{equation}
-Nu de formule voor Rs te berekenen gekend is, moeten we kijken naar R0. R0 is de weerstand van de sensor in schone lucht. Op de gevoeligheidscurve (\ref{fig:MQ135_grafiek}) is te zien hoe Rs/R\textsubscript{0} een constante is voor schone lucht. Via software zoals WebPlotDigitizer
-%TODO bron WebPlotDigitizer
-kan de waarde van deze constante worden opgehaald. Voor de MQ-135 is deze waarde 3,6.
+Nu de formule voor Rs te berekenen gekend is, moeten we kijken naar R0. R0 is de weerstand van de sensor in schone lucht. Op de gevoeligheidscurve (\ref{fig:MQ135_grafiek}) is te zien hoe Rs/R\textsubscript{0} een constante is voor schone lucht. Via software zoals WebPlotDigitizer \autocite{Rohatgi2024} kan de waarde van deze constante worden opgehaald. Voor de MQ-135 is deze waarde 3,6.
 
 Dus:
 \begin{equation}
@@ -274,9 +235,7 @@ Dus:
 \end{equation}
 Om de sensor te kalibreren moet dus de R\textsubscript{0} waarde worden berekend. Het is dus zeer belangrijk dat de sensor 24-48 heeft voorverwarmd en dat de kalibratie in schone lucht gebeurt, anders kan de R\textsubscript{0} waarde afwijken en zullen de lezingen incorrect zijn.
 
-Om de ppm waarde te berekenen kijken we opnieuw naar de gevoeligheidscurves (\ref{fig:MQ135_grafiek}).Deze curves lijken lineair te dalen, maar deze grafiek is dubbellogaritmisch. Volgens 
-%TODO https://en.wikipedia.org/wiki/Log%E2%80%93log_plot
-is de vergelijking voor een lineaire curve in een dubbellogaritmische weergave de volgende:
+Om de ppm waarde te berekenen kijken we opnieuw naar de gevoeligheidscurves (\ref{fig:MQ135_grafiek}). Deze curves lijken lineair te dalen, maar deze grafiek is dubbellogaritmisch. Volgens \textcite{loglog2024} is de vergelijking voor een lineaire curve in een dubbellogaritmische weergave de volgende:
 \begin{equation}
     F(x) = x^{m} * 10^{b}
 \end{equation}
@@ -290,9 +249,7 @@ Volgens de MQ-135 grafiek is dit dan:
 \begin{equation}
     \log_{10} (\frac{Rs}{R_0}) = m * \log_{10} (ppm) + b
 \end{equation}
-Om de ppm van een specifiek gas te berekenen hebben we $m$ en $b$ nodig. Hiervoor nemen we 2 punten op de curve van het gewenste gas waarvoor de ppm moet worden berekend (\ref{fig:MQ135_grafiek}), dit kan opnieuw worden gedaan met WebPlotDigitizer
-%TODO bron WebPlotDigitizer
-. Deze punten zullen we $x1,\ x2,\ y1\ en\ y2$ noemen:
+Om de ppm van een specifiek gas te berekenen hebben we $m$ en $b$ nodig. Hiervoor nemen we 2 punten op de curve van het gewenste gas waarvoor de ppm moet worden berekend (\ref{fig:MQ135_grafiek}), dit kan opnieuw worden gedaan met WebPlotDigitizer \autocite{Rohatgi2024}. Deze punten zullen we $x1,\ x2,\ y1\ en\ y2$ noemen:
 \begin{eqnarray}
     \begin{cases}
         \log_{10} (y1) = m * \log_{10} (x1) + b\\
@@ -310,17 +267,7 @@ Nu dat $m$ en $b$ zijn gekend kan de ppm worden berekend via vergelijking~\ref{e
     ppm = \Big(\frac{Rs}{R_0 * 10^{b}}\Big)^{\frac{1}{m}}
 \end{equation}
 
-De volgende bronnen werden geraadpleegd bij het berekenen van deze waarden:
-%TODO wet van Ohm wikipedia
-%TODO https://www.onetransistor.eu/2022/12/mq-sensors-compute-gas-ppm.html
-%TODO https://www.sciencedirect.com/science/article/pii/S187705092030051X?ref=pdf_download&fr=RR-2&rr=87af19623c962e08
-%TODO https://www.researchgate.net/profile/Mihaela-Hnatiuc/publication/330597436_Acquisition_and_Calibration_Interface_for_Gas_Sensors/links/5eaaa60992851cb26766db30/Acquisition-and-Calibration-Interface-for-Gas-Sensors.pdf
-%TODO https://www.jaycon.com/understanding-a-gas-sensor/
-%TODO PDF: MQ135 studie met berekeningen
-%TODO https://www.rapidtables.com/math/algebra/Logarithm.html
-%TODO https://www.kalaharijournals.com/resources/FebV7_I2_372.pdf
-%TODO https://davidegironi.blogspot.com/2014/01/cheap-co2-meter-using-mq135-sensor-with.html
-%TODO https://davidegironi.blogspot.com/2017/05/mq-gas-sensor-correlation-function.html
+De volgende bronnen werden geraadpleegd bij het berekenen van deze waarden: \autocite{ohm2024}, \autocite{Cornelius2022}, \autocite{KumarSai2019}, \autocite{Dorcea2018}, \autocite{jaycon2023}, \autocite{Kalra2016}, \autocite{RapidTables}, \autocite{Ibrahim2022}, \autocite{Gironi2014} en \autocite{Gironi2017}.
 
 
 
@@ -328,58 +275,35 @@ De volgende bronnen werden geraadpleegd bij het berekenen van deze waarden:
 \label{sec:warmte-koelcyclus}
 
 
-Volgens de officiële datasheet van de MQ-7 sensor is het werkingsprincipe anders dan de MQ-4 en -135 sensoren. Voor optimale resultaten moet er namelijk gebruik worden gemaakt van een warmte-koelcyclus. In deze cyclus wordt doorheen twee fases gegaan, een fase van lage verwarming en een fase van hoge verwarming. Tijdens de lage temperatuurfase wordt gedurende 90 seconden 1,4V naar de sensor verzonden. In deze fase wordt CO geabsorbeerd op de plaat, op het einde kan de waarde worden afgelezen. Tijdens de hoge temperatuurfase wordt gedurende 60 seconden 5V naar de sensor verzonden. In deze fase verdampen geabsorbeerde gassen van de sensorplaat, waardoor deze wordt gereinigd voor de volgende meting
-%TODO PDF CalibrationandimplementationofMQ7_.pdf
-%TODO https://www.instructables.com/Arduino-CO-Monitor-Using-MQ-7-Sensor/
-. Een duidelijk voorbeeld hiervan is te zien in de figuur (\ref{fig:heat_cool_datasheet}) van de datasheet
+Volgens de officiële datasheet van de MQ-7 sensor is het werkingsprincipe voor deze sensor anders dan de MQ-4 en -135 sensoren. Voor optimale resultaten moet er namelijk gebruik worden gemaakt van een warmte-koelcyclus. In deze cyclus wordt doorheen twee fases gegaan, een fase van lage verwarming en een fase van hoge verwarming. Tijdens de lage temperatuurfase wordt gedurende 90 seconden 1,4V naar de sensor verzonden. In deze fase wordt gas geabsorbeerd op de plaat, op het einde kan de waarde worden afgelezen. Tijdens de hoge temperatuurfase wordt gedurende 60 seconden 5V naar de sensor verzonden. In deze fase verdampen geabsorbeerde gassen van de sensorplaat, waardoor deze wordt gereinigd voor de volgende meting \autocite{Kobbekaduwa2021}. Een duidelijk voorbeeld hiervan is te zien in de figuur (\ref{fig:heat_cool_datasheet}) van de datasheet
 
-\begin{figure}[h]
-    \includegraphics[scale=0.4, center]{heat_cool_datasheet.png}
-    \caption[Warmte-koelcyclus MQ-7]{Een voorbeeld van de warmte-koelcyclus in de datasheet van de MQ-7
-    %TODO bron datasheet mq7
-    }
+\begin{figure}[h!]
+    \includegraphics[scale=0.3, center]{heat_cool_datasheet.png}
+    \caption[Warmte-koelcyclus MQ-7]{Een voorbeeld van de warmte-koelcyclus in de datasheet van de MQ-7 \autocite{mq7}}
     \label{fig:heat_cool_datasheet}
 \end{figure}
 
-In de studie van 
-%TODO PDF CalibrationandimplementationofMQ7_.pdf
-is te zien hoe deze warmte-koelcyclus kan worden geïmplementeerd. De benodigde materialen (naast de MQ-7 en Arduino) zijn twee weerstanden van 10$k\Omega$ en een MOSFET transistor van het type IRF2807.
+In de studie van \textcite{Kobbekaduwa2021} is te zien hoe deze warmte-koelcyclus kan worden geïmplementeerd. De benodigde materialen (naast de MQ-7 en Arduino) zijn twee weerstanden van 10$k\Omega$ en een MOSFET transistor van het type IRF2807.
 
 
 \section{Hoe kunnen de temperatuur en luchtvochtigheid tot nauwkeurigere resultaten leiden?}
 \label{sec:temp-en-hum}
 
-Zoals besproken in~\ref{subsec:MOS} zijn halfgeleider gassensoren gevoelig voor omgevingsfactoren zoals temperatuur en luchtvochtigheid. Een sensor zoals de DHT22
-%TODO https://www.sparkfun.com/datasheets/Sensors/Temperature/DHT22.pdf
-kan deze omgevingsfactoren meten en kan zo de resultaten van de MQ-sensoren optimaliseren.
+Zoals besproken in~\ref{subsec:MOS} zijn halfgeleider gassensoren gevoelig voor omgevingsfactoren zoals temperatuur en luchtvochtigheid. Een sensor zoals de DHT22 \autocite{Liu} kan deze omgevingsfactoren meten en kan zo de resultaten van de MQ-sensoren optimaliseren.
 
-Volgens
-%TODO https://www.researchgate.net/publication/328875972_Influence_of_Temperature_and_Humidity_on_the_Output_Resistance_Ratio_of_the_MQ-135_Sensor
-en
-%TODO https://www.onetransistor.eu/2023/01/mq-sensors-temperature-humidity.html?sc=1714397191169#c3436257572349369383
-kan $Rs$ worden gecorrigeerd om zo een correctere ppm te verkrijgen. In de datasheets 
-%TODO datasheets bron
-van de MQ-sensoren staan naast gevoeligheidscurves grafieken die de invloed van temperatuur en vochtigheid weergeven. Zo zie je bijvoorbeeld in figuur~\ref{fig:MQ135_grafiek2} de afhankelijkheidsgrafiek van de MQ-135 datasheet.
+Volgens \textcite{Kalra2016} en \textcite{Cornelius2023} kan $Rs$ worden gecorrigeerd om zo een correctere ppm te verkrijgen. In de datasheets (\autocite{mq4}, \autocite{mq7}, \autocite{mq135}) van de MQ-sensoren staan naast gevoeligheidscurves grafieken die de invloed van temperatuur en vochtigheid weergeven. Zo zie je bijvoorbeeld in figuur~\ref{fig:MQ135_grafiek2} de afhankelijkheidsgrafiek van de MQ-135 datasheet.
 
 \begin{figure}[h]
-    \includegraphics[scale=0.7, center]{MQ135_grafiek2.png}
-    \caption[Afhankelijkheid temperatuur en luchtvochtigheid op MQ-135]{Afhankelijkheidsgrafiek van temperatuur en luchtvochtigheid op de resultaten van de MQ-135
-        %TODO bron datasheet mq135
-    }
+    \includegraphics[scale=0.55, center]{MQ135_grafiek2.png}
+    \caption[Afhankelijkheid temperatuur en luchtvochtigheid op MQ-135]{Afhankelijkheidsgrafiek van temperatuur en luchtvochtigheid op de resultaten van de MQ-135 \autocite{mq135}}
     \label{fig:MQ135_grafiek2}
 \end{figure}
 
-In de blog van software-ingenieur
-%TODO https://davidegironi.blogspot.com/2017/07/mq-gas-sensor-correlation-function.html
-en in de studie van
-%TODO https://sensors.myu-group.co.jp/sm_pdf/SM3049.pdf
-wordt vastgesteld dat via lineaire interpolatie de juiste correctiefactor kan worden berekent.
+In de blog van software-ingenieur \textcite{Gironi20172} en in de studie van \textcite{Sukhdev2022} wordt vastgesteld dat via lineaire interpolatie de juiste correctiefactor kan worden berekent.
 
 Aan de hand van de volgende stappen wordt duidelijk gemaakt hoe de correctiefactor kan worden berekend:
 
-We beginnen met de afhankelijkheidsgrafiek van de datasheet (\ref{fig:MQ135_grafiek2}). Hier is te zien hoe Rs/R\textsubscript{0} kleiner wordt naarmate de temperatuur en vochtigheidsgraad stijgen. Via WebPlotDigitizer kunnen opnieuw de waarden uit deze grafieken gehaald worden
-%TODO bron WebPlotDigitizer
-. Hierna kan er via de \verb|polyfit| functie van Python package \verb|numpy| curve fitting worden gedaan op deze datapunten, zoals in de volgende listing:
+We beginnen met de afhankelijkheidsgrafiek van de datasheet (\ref{fig:MQ135_grafiek2}). Hier is te zien hoe Rs/R\textsubscript{0} kleiner wordt naarmate de temperatuur en vochtigheidsgraad stijgen. Via WebPlotDigitizer kunnen opnieuw de waarden uit deze grafieken gehaald worden \autocite{Rohatgi2024}. Hierna kan er via de \verb|polyfit| functie van Python package \verb|numpy| curve fitting worden gedaan op deze datapunten, zoals in de volgende listing:
 \begin{lstlisting}[language=Python, caption={Curve fitting in Python}]
 import pandas as pd
 import numpy as np
@@ -395,25 +319,27 @@ mq135_humidity_33_fit = np.polyfit(mq135_humidity_33_df['x'], mq135_humidity_33_
 Als dit voor alle grafieken wordt gedaan wordt het resultaat in figuur~\ref{fig:curve_fitting_NOG_NIET} verkregen.
 
 \begin{figure}[h]
-    \includegraphics[scale=0.5, center]{curve_fitting_NOG_NIET.png}
+    \includegraphics[scale=0.43, center]{curve_fitting_NOG_NIET.png}
     \caption[Niet optimale curve-fit op de datapunten]{Niet optimale curve-fit op de datapunten}
     \label{fig:curve_fitting_NOG_NIET}
 \end{figure}
 
-In deze grafiek is te zien hoe de curve fitting vanaf 20°C niet meer correct is, daarom zal de curve fitting worden opgesplitst. Voor de temperaturen onder 20°C zal een functie van de 2\textsubscript{de} graad worden toegepast, voor alle temperaturen hier boven zal gebruik worden gemaakt van een lineaire functie. Het resultaat is te zien in figuur~\ref{fig:curve_fitting_GOED}.
+In deze grafiek is te zien hoe de curve fitting vanaf 20°C niet meer correct is, daarom zal de curve fitting worden opgesplitst. Voor de temperaturen onder 20°C zal een functie van de 2\textsubscript{de} graad worden toegepast, voor alle temperaturen hierboven zal gebruik worden gemaakt van een lineaire functie. Het resultaat is te zien in figuur~\ref{fig:curve_fitting_GOED}.
 
-\begin{figure}[h]
-    \includegraphics[scale=0.5, center]{curve_fitting_GOED.png}
+\begin{figure}[!h]
+    \includegraphics[scale=0.43, center]{curve_fitting_GOED.png}
     \caption[Optimale curve-fit op de datapunten]{Optimale curve-fit op de datapunten}
     \label{fig:curve_fitting_GOED}
 \end{figure}
+
+Zo zijn de functies voor de MQ-135 (\ref{fig:MQ135_grafiek2}) de volgende:
 
 \(MQ135\_humidity\_33\_under\_20\ =\ 0.00046 * x^2 - 0.02907 * x + 1.37849\) \\
 \(MQ135\_humidity\_85\_under\_20\ =\ 0.00041 * x^2 - 0.02534 * x + 1.24596\) \\
 \(MQ135\_humidity\_33\_over\_20\ =\ -0.00233 * x + 1.02679\) \\
 \(MQ135\_humidity\_85\_over\_20\ =\ -0.00273 * x + 0.95286\)
 
-Nu de vergelijkingen voor alle grafieken gekend zijn kan de correctiefactor worden berekend. In het volgende voorbeeld wordt aangetoond hoe dit kan: stel dat we met de MQ-135 sensor een meting hebben gedaan waarbij de $temperatuur$ gelijk is aan $23$°C en de $vochtigheidsgraad$ gelijk is aan $55\%$. Aangezien de temperatuur boven de 20°C ligt zullen de lineair vergelijkingen worden gebruikt.
+Nu de vergelijkingen voor alle grafieken gekend zijn kan de correctiefactor worden berekend. In het volgende voorbeeld wordt aangetoond hoe dit kan: stel dat we met de MQ-135 sensor een meting hebben gedaan waarbij de $temperatuur$ gelijk is aan $23$°C en de $vochtigheidsgraad$ gelijk is aan $55\%$. Aangezien de temperatuur boven de 20°C ligt zullen de lineaire vergelijkingen worden gebruikt.
 Eerst zal Rs/R\textsubscript{0} worden berekend voor $temperatuur = 23$°C:
 
 \begin{equation}
@@ -427,23 +353,9 @@ En hetzelfde voor vochtigheidsgraad 85\%:
     F\_85(23) = 0.89007
 \end{equation}
 
-\begin{figure}[h]
-    \includegraphics[scale=0.7, center]{berekeningen_1.png}
-    \caption[Voorbeeld berekenen Rs/R0 met temperatuur = 23°C]{Voorbeeld berekenen van de Rs/R0 waarden voor een temperatuur van 23°C}
-    \label{fig:berekeningen_1}
-\end{figure}
+Als er vanuit wordt gegaan dat de luchtvochtigheidsgraad lineair afhankelijk is (wat niet zeker is aangezien er maar 2 waarden in de datasheet zijn gegeven!) kan de rechtse grafiek in figuur~\ref{fig:berekeningen} worden opgesteld, waarbij de X-as is nu luchtvochtigheid is.
 
-Als er vanuit wordt gegaan dat de luchtvochtigheidsgraad lineair afhankelijk is (wat niet zeker is aangezien er maar 2 waarden in de datasheet zijn gegeven!) kan de grafiek in figuur~\ref{fig:berekeningen_2} worden opgesteld.
-
-\begin{figure}[h]
-    \includegraphics[scale=0.55, center]{berekeningen_2.png}
-    \caption[Voorbeeld berekenen Rs/R0 met luchtvochtigheid = 55\%]{Voorbeeld berekenen van de Rs/R0 waarden voor een luchtvochtigheid van 55\%}
-    \label{fig:berekeningen_2}
-\end{figure}
-
-Via lineaire interpolatie 
-%TODO https://en.wikipedia.org/wiki/Linear_interpolation
-kan nu de correctiefactor voor Rs/R\textsubscript{0} worden berekend:
+Via lineaire interpolatie \autocite{lin2016} kan nu de correctiefactor voor Rs/R\textsubscript{0} worden berekend:
 
 \begin{equation}
     y = y1 + \frac{y2 - y1}{x2 - x1}*(x - x1)
@@ -459,5 +371,12 @@ Nu is Rs/R\textsubscript{0}:
 \begin{equation}
     correcte\_Rs/R_0 = \frac{Rs}{R_0} * 0.93802
 \end{equation}
+
+
+\begin{figure}[h]
+    \includegraphics[scale=0.55, center]{berekeningen.png}
+    \caption[Voorbeeld berekenen Rs/R0 met temperatuur = 23°C en luchtvochtigheid = 55\%]{Voorbeeld berekenen van de Rs/R0 waarden voor een temperatuur van 23°C en een luchtvochtigheid van 55\%}
+    \label{fig:berekeningen}
+\end{figure}
 
 

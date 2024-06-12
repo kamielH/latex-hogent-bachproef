@@ -16,10 +16,8 @@
 %    \item \ldots
 %\end{itemize}
 
-Jaarlijks sterven talloze varkens aan vergiftiging door schadelijke gassen die zich ophopen in de stalomgeving \autocite{Sercu2023}. Deze gassen, zoals koolstofmonoxide (CO), koolstofdioxide (CO\textsubscript{2}), ammoniak (NH\textsubscript{3}), en methaan (CH\textsubscript{4}), ontstaan in de mest van varkens als gevolg van microbiële afbraak van de aanwezige eiwitten \autocite{Wolf2013}. Deze gassen kunnen bij ophoping zeer giftig zijn voor zowel dieren als mensen. Ook kan dit leiden tot een afname van de biodiversiteit in de omgeving van de stal. Dat komt voornamelijk door ammoniak, ammoniak zorgt voor vermesting waardoor de grond steeds rijker wordt aan voedingsstoffen. Hierdoor worden veel planten verdrongen door planten zoals gras en brandnetels,
-%TODO https://www.milieucentraal.nl/klimaat-en-aarde/milieuproblemen/stikstof-in-de-lucht-en-bodem/
-dit zorgt voor minder planten en dieren waardoor de biodiversiteit verslechtert. Ook kan er in de buurt van een varkensstal last van geurhinder zijn door de grote hoeveelheid ammoniak in de lucht \autocite{RSS2020}.
-%TODO https://www.wur.nl/nl/en/onderzoek-resultaten/dossiers/dossier/stikstof-1.htm erin weven
+Jaarlijks sterven talloze varkens aan vergiftiging door schadelijke gassen die zich ophopen in de stalomgeving \autocite{Sercu2023}. Deze gassen, zoals koolstofmonoxide (CO), koolstofdioxide (CO\textsubscript{2}), ammoniak (NH\textsubscript{3}), en methaan (CH\textsubscript{4}), ontstaan in de mest van varkens als gevolg van microbiële afbraak van de aanwezige eiwitten \autocite{Wolf2013}. Deze gassen kunnen bij ophoping zeer giftig zijn voor zowel dieren als mensen. Ook kan dit leiden tot een afname van de biodiversiteit in de omgeving van de stal. Dat komt voornamelijk door ammoniak, ammoniak zorgt voor vermesting waardoor de grond steeds rijker wordt aan voedingsstoffen. Hierdoor worden veel planten verdrongen door planten zoals gras en brandnetels \autocite{Centraal2020},
+dit zorgt voor minder planten en dieren waardoor de biodiversiteit verslechtert \autocite{Bol2020}. Ook kan er in de buurt van een varkensstal last van geurhinder zijn door de grote hoeveelheid ammoniak in de lucht \autocite{Rijksinstituut2020}.
 
 Het monitoren van het klimaat in de stal kan worden uitgevoerd met behulp van verschillende gassensoren, maar een professionele sensor kan al snel zeer duur zijn. Bovendien zijn dergelijke sensoren doorgaans niet ontworpen met het oog op gebruik in stalomgevingen, wat hun levensduur aanzienlijk kan verkorten. Vandaar dat de centrale onderzoeksvraag luidt: ``Hoe geschikt zijn goedkope sensoren om gassen in stalomgevingen te meten?''. Het onderzoek zal zich richten op goedkope gassensoren, met name van het type halfgeleiders, die aan de hand van een microcontroller (Arduino) de luchtkwaliteit van een stal kunnen bepalen. Er zal aandacht worden besteed aan hoe deze sensoren precies in elkaar zitten, hun nauwkeurigheid en geschiktheid voor gebruik in stalomgevingen, en hoe de bekomen data kan worden opgeslagen en geïnterpreteerd.
 
@@ -31,7 +29,7 @@ Het monitoren van het klimaat in de stal kan worden uitgevoerd met behulp van ve
 
 %Uit je probleemstelling moet duidelijk zijn dat je onderzoek een meerwaarde heeft voor een concrete doelgroep. De doelgroep moet goed gedefinieerd en afgelijnd zijn. Doelgroepen als ``bedrijven,'' ``KMO's'', systeembeheerders, enz.~zijn nog te vaag. Als je een lijstje kan maken van de personen/organisaties die een meerwaarde zullen vinden in deze bachelorproef (dit is eigenlijk je steekproefkader), dan is dat een indicatie dat de doelgroep goed gedefinieerd is. Dit kan een enkel bedrijf zijn of zelfs één persoon (je co-promotor/opdrachtgever).
 
-Omdat professionele gassensoren op de markt niet geschikt zijn voor het klimaat van een veestal kan hun gebruiksduur sterk afnemen. Zo heeft de gemiddelde gassensor een levensduur van 6 maanden doordat de gevoeligheid snel afneemt in het stalklimaat. Omdat deze sensoren 600 tot 1000 euro kunnen kosten verliezen veehouders snel de motivatie om gassensoren te vervangen. Daarom richt deze studie zich op kostefficiënte halfgeleider gassensoren, met name de MQ-sensors. Deze kleine en goedkope sensoren zijn robuust en kunnen gassen detecteren door middel van een verandering in weerstand bij aanraking.
+Omdat professionele gassensoren op de markt niet geschikt zijn voor het klimaat van een veestal kan hun gebruiksduur sterk afnemen. Zo heeft de gemiddelde gassensor een levensduur van 6 maanden doordat de gevoeligheid snel afneemt in het stalklimaat. Omdat deze sensoren 600 tot 1000 euro kunnen kosten verliezen veehouders snel de motivatie om gassensoren te vervangen. Daarom richt deze studie zich op kostefficiënte halfgeleider gassensoren, met name de MQ-sensoren. Deze kleine en goedkope sensoren zijn robuust en kunnen gassen detecteren door middel van een verandering in weerstand bij aanraking.
 
 Dit onderzoek richt zich naar fabrikanten van gassensoren, die deze studie kunnen benutten als inspiratiebron voor de ontwikkeling van nieuwe producten die specifiek zijn gericht op veehouders. De onderzoekers van deze fabrikanten zouden deze studie kunnen gebruiken om op een goedkope manier een test set-up van een gassensor in elkaar te zetten. Deze test-setup zou dan uiteindelijk als inspiratie kunnen dienen voor een professionele gassensor, die op kostefficiënte manier geschikt is om de luchtkwaliteit in een stalomgeving te monitoren. Hierdoor zullen veehouders sneller gemotiveerd zijn om gassensoren te implementeren die voldoende geschikt zijn voor een stalomgeving, gezien hun verantwoordelijkheid voor het waarborgen van de gezondheid van hun dieren en het milieu.
 
@@ -48,10 +46,9 @@ Zoals aangegeven in onderdeel~\ref{sec:probleemstelling} zal deze studie zich fo
 Aangezien de hoofdonderzoeksvraag vrij breed is zal deze worden opgesplitst in verschillende deelvragen.
 
 \begin{itemize}
-    \item Hoe gaat een MQ-gassensor te werk?
-    \item Hoe kunnen deze gassensoren de luchtsamenstelling meten?
     \item Zijn deze gassensoren geschikt om de luchtsamenstelling uit te lezen?
-    \item Hoe werkt een warmte-koelcyclus in een sensor en heeft dit voordelen?
+    \item Zijn deze gassensoren geschikt om stalgassen te meten?
+    \item Welke voordelen heeft een warmte-koelcyclus in een sensor?
 \end{itemize}
 
 
